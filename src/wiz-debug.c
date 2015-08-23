@@ -283,7 +283,7 @@ static void do_cmd_wiz_change_aux(void)
 	/* Query the stats */
 	for (i = 0; i < STAT_MAX; i++) {
 		/* Prompt */
-		strnfmt(ppp, sizeof(ppp), "%s (3-118): ", stat_names[i]);
+		strnfmt(ppp, sizeof(ppp), "%s (3-30): ", stat_names[i]);
 
 		/* Default */
 		strnfmt(tmp_val, sizeof(tmp_val), "%d", player->stat_max[i]);
@@ -295,7 +295,7 @@ static void do_cmd_wiz_change_aux(void)
 		tmp_int = atoi(tmp_val);
 
 		/* Verify */
-		if (tmp_int > 18+100) tmp_int = 18+100;
+		if (tmp_int > 30) tmp_int = 30;
 		else if (tmp_int < 3) tmp_int = 3;
 
 		/* Save it */
@@ -1218,6 +1218,7 @@ static void do_cmd_wiz_cure_all(void)
 	effect_simple(EF_RESTORE_STAT, "0", STAT_WIS, 0, 0, NULL);
 	effect_simple(EF_RESTORE_STAT, "0", STAT_DEX, 0, 0, NULL);
 	effect_simple(EF_RESTORE_STAT, "0", STAT_CON, 0, 0, NULL);
+	effect_simple(EF_RESTORE_STAT, "0", STAT_CHA, 0, 0, NULL);
 
 	/* Restore the level */
 	effect_simple(EF_RESTORE_EXP, "0", 1, 0, 0, NULL);
@@ -1679,7 +1680,7 @@ static void do_cmd_wiz_advance(void)
 
 	/* Max stats */
 	for (i = 0; i < STAT_MAX; i++)
-		player->stat_cur[i] = player->stat_max[i] = 118;
+		player->stat_cur[i] = player->stat_max[i] = 30;
 
 	/* Lots of money */
 	player->au = 1000000L;

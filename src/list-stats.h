@@ -9,8 +9,9 @@
  * and list-slays.h)
  */
 /* index       	power	sustain			sust_p	mult		pos adj		neg adj		name */
-STAT(STR,        9,		SUST_STR,		9,		13,			"strong",	"weak",		"strength")
-STAT(INT,        5,		SUST_INT,		4,		10,			"smart",	"stupid",	"intelligence")
-STAT(WIS,        5,		SUST_WIS,		4,		10,			"wise",		"naive",	"wisdom")
-STAT(DEX,        8,		SUST_DEX,		7,		10,			"dextrous",	"clumsy",	"dexterity")
-STAT(CON,        12,	SUST_CON,		8,		15,			"healthy",	"sickly",	"constitution")
+STAT(STR,        9,	SUST_STR,		9,	13,		"honest",	"deceitful",	"honesty")
+STAT(INT,        5,	SUST_INT,		4,	10,		"magical",	"powerless",	"magic")
+STAT(WIS,        5,	SUST_WIS,		4,	10,		"joyous",	"bitter",	"laughter")
+STAT(DEX,        8,	SUST_DEX,		7,	10,		"loyal",	"selfish",	"loyalty")
+STAT(CON,        12,	SUST_CON,		8,	15,		"generous",	"greedy",	"generosity")
+STAT(CHA,        5,	SUST_CHA,		4,      10,             "kind",		"mean",		"kindness")

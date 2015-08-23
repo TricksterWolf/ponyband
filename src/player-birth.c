@@ -772,7 +772,7 @@ static void generate_stats(int stats[STAT_MAX], int points_spent[STAT_MAX],
 
 			/* 
 			 * If there are any points left, spend as much as possible in 
-			 * order on DEX, and the non-spell-stat. 
+			 * order on DEX, and the non-spell-stat (excluding CHA). 
 			 */
 			case 4:{
 			

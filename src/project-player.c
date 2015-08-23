@@ -102,12 +102,13 @@ static void project_player_drain_stats(int num)
 	const char *act = NULL;
 
 	for (i = 0; i < num; i++) {
-		switch (randint1(5)) {
-			case 1: k = STAT_STR; act = "strong"; break;
-			case 2: k = STAT_INT; act = "bright"; break;
-			case 3: k = STAT_WIS; act = "wise"; break;
-			case 4: k = STAT_DEX; act = "agile"; break;
-			case 5: k = STAT_CON; act = "hale"; break;
+		switch (randint1(6)) {
+			case 1: k = STAT_STR; act = "honest"; break;
+			case 2: k = STAT_INT; act = "magical"; break;
+			case 3: k = STAT_WIS; act = "joyous"; break;
+			case 4: k = STAT_DEX; act = "loyal"; break;
+			case 5: k = STAT_CON; act = "generous"; break;
+			case 6: k = STAT_CHA; act = "kind"; break;
 		}
 
 		msg("You're not as %s as you used to be...", act);

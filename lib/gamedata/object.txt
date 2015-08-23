@@ -303,6 +303,8 @@ effect:RESTORE_STAT:DEX
 param:1
 effect:RESTORE_STAT:CON
 param:1
+effect:RESTORE_STAT:CHA
+param:1
 effect:NOURISH
 dice:500
 
@@ -1277,7 +1279,7 @@ flags:IGNORE_ACID
 
 ### Stat rings ###
 
-name:190:Strength
+name:190:Honesty
 graphics:=:d
 type:ring
 properties:30:2:500
@@ -1285,7 +1287,7 @@ alloc:50:30 to 100
 flags:SUST_STR | 
 values:STR[1+M5]
 
-name:191:Intelligence
+name:191:Magic
 graphics:=:d
 type:ring
 properties:30:2:500
@@ -1293,7 +1295,7 @@ alloc:50:30 to 100
 flags:SUST_INT | 
 values:INT[1+M5]
 
-name:192:Dexterity
+name:192:Loyalty
 graphics:=:d
 type:ring
 properties:30:2:500
@@ -1301,7 +1303,7 @@ alloc:50:30 to 100
 flags:SUST_DEX | 
 values:DEX[1+M5]
 
-name:193:Constitution
+name:193:Generosity
 graphics:=:d
 type:ring
 properties:30:2:500
@@ -1341,7 +1343,7 @@ graphics:=:d
 type:ring
 properties:30:2:600
 alloc:20:30 to 100
-flags:SUST_STR | SUST_INT | SUST_WIS | EASY_KNOW
+flags:SUST_INT | SUST_WIS | SUST_CHA | EASY_KNOW
 
 ### 200, sval 11
 
@@ -1579,7 +1581,7 @@ time:15+2d10
 
 ### Stat boosts ###
 
-name:230:Wisdom
+name:230:Laughter
 graphics:":d
 type:amulet
 properties:30:3:500
@@ -1587,7 +1589,14 @@ alloc:50:20 to 90
 flags:SUST_WIS | 
 values:WIS[1+M5]
 
-### 231, sval 2
+name:231:Kindness
+graphics:":d
+type:amulet
+properties:30:3:500
+alloc:50:20 to 90
+flags:SUST_CHA | 
+values:CHA[1+M5]
+
 
 ### Resistances ###
 
@@ -1623,7 +1632,7 @@ graphics:":d
 type:amulet
 properties:60:3:20000
 alloc:10:60 to 100
-flags:SUST_STR | SUST_INT | SUST_WIS | SUST_DEX | SUST_CON |
+flags:SUST_STR | SUST_INT | SUST_WIS | SUST_DEX | SUST_CON | SUST_CHA |
 flags:HOLD_LIFE | SLOW_DIGEST | EASY_KNOW | 
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
@@ -2173,7 +2182,7 @@ effect:TOUCH:MAKE_TRAP
 
 ### Statgain ###
 
-name:310:Strength
+name:310:Honesty
 graphics:!:d
 type:potion
 properties:30:4:8000
@@ -2183,7 +2192,7 @@ power:20000
 effect:RESTORE_STAT:STR
 effect:GAIN_STAT:STR
 
-name:311:Intelligence
+name:311:Magic
 graphics:!:d
 type:potion
 properties:30:4:8000
@@ -2193,7 +2202,7 @@ power:20000
 effect:RESTORE_STAT:INT
 effect:GAIN_STAT:INT
 
-name:312:Wisdom
+name:312:Laughter
 graphics:!:d
 type:potion
 properties:30:4:8000
@@ -2203,7 +2212,7 @@ power:20000
 effect:RESTORE_STAT:WIS
 effect:GAIN_STAT:WIS
 
-name:313:Dexterity
+name:313:Loyalty
 graphics:!:d
 type:potion
 properties:30:4:8000
@@ -2213,7 +2222,7 @@ power:20000
 effect:RESTORE_STAT:DEX
 effect:GAIN_STAT:DEX
 
-name:314:Constitution
+name:314:Generosity
 graphics:!:d
 type:potion
 properties:30:4:8000
@@ -2223,9 +2232,17 @@ power:20000
 effect:RESTORE_STAT:CON
 effect:GAIN_STAT:CON
 
-### 315, sval 6
+name:315:Kindness
+graphics:!:d
+type:potion
+properties:30:4:8000
+alloc:30:30 to 100
+pile:10:2
+power:20000
+effect:RESTORE_STAT:CHA
+effect:GAIN_STAT:CHA
 
-name:316:Augmentation
+name:316:Friendship
 graphics:!:d
 type:potion
 properties:40:4:50000
@@ -2242,8 +2259,10 @@ effect:RESTORE_STAT:DEX
 effect:GAIN_STAT:DEX
 effect:RESTORE_STAT:CON
 effect:GAIN_STAT:CON
+effect:RESTORE_STAT:CHA
+effect:GAIN_STAT:CHA
 
-name:317:Experience
+name:317:Lessons Learned
 graphics:!:d
 type:potion
 properties:65:4:25000
@@ -2361,6 +2380,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 effect:HEAL_HP
 dice:5000
 
@@ -2399,7 +2419,7 @@ effect:RESTORE_EXP
 
 ### Gain one/lose one potions ###
 
-name:333:Brawn
+name:333:Integrity
 graphics:!:d
 type:potion
 properties:3:4:1000
@@ -2410,7 +2430,7 @@ effect:RESTORE_STAT:STR
 effect:GAIN_STAT:STR
 effect:LOSE_RANDOM_STAT:STR
 
-name:334:Intellect
+name:334:Sorcery
 graphics:!:d
 type:potion
 properties:20:4:1000
@@ -2421,7 +2441,7 @@ effect:RESTORE_STAT:INT
 effect:GAIN_STAT:INT
 effect:LOSE_RANDOM_STAT:INT
 
-name:335:Contemplation
+name:335:Giggles
 graphics:!:d
 type:potion
 properties:20:4:1000
@@ -2432,7 +2452,7 @@ effect:RESTORE_STAT:WIS
 effect:GAIN_STAT:WIS
 effect:LOSE_RANDOM_STAT:WIS
 
-name:336:Nimbleness
+name:336:Devotion
 graphics:!:d
 type:potion
 properties:5:4:1000
@@ -2443,7 +2463,7 @@ effect:RESTORE_STAT:DEX
 effect:GAIN_STAT:DEX
 effect:LOSE_RANDOM_STAT:DEX
 
-name:337:Toughness
+name:337:Charity
 graphics:!:d
 type:potion
 properties:10:4:1000
@@ -2453,6 +2473,17 @@ power:30
 effect:RESTORE_STAT:CON
 effect:GAIN_STAT:CON
 effect:LOSE_RANDOM_STAT:CON
+
+name:338:Affection
+graphics:!:d
+type:potion
+properties:10:4:1000
+alloc:30:20 to 40
+pile:10:2
+power:30
+effect:RESTORE_STAT:CHA
+effect:GAIN_STAT:CHA
+effect:LOSE_RANDOM_STAT:CHA
 
 
 ### Knowledge ###
@@ -2480,6 +2511,8 @@ effect:RESTORE_STAT:INT
 effect:GAIN_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:GAIN_STAT:WIS
+effect:RESTORE_STAT:CHA
+effect:GAIN_STAT:CHA
 effect:DETECT_TRAPS
 dice:22d40
 effect:DETECT_DOORS
@@ -3657,6 +3690,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 effect:RESTORE_EXP
 time:1000
 

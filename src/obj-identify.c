@@ -795,25 +795,29 @@ void object_notice_on_wield(struct object *obj)
 
 	/* Special messages for individual properties */
 	if (obj->modifiers[OBJ_MOD_STR] > 0)
-		msg("You feel stronger!");
+		msg("You feel more honest!");
 	else if (obj->modifiers[OBJ_MOD_STR] < 0)
-		msg("You feel weaker!");
+		msg("You feel more deceitful!");
 	if (obj->modifiers[OBJ_MOD_INT] > 0)
-		msg("You feel smarter!");
+		msg("You feel friendlier!");
 	else if (obj->modifiers[OBJ_MOD_INT] < 0)
-		msg("You feel more stupid!");
+		msg("You feel more withdrawn!");
 	if (obj->modifiers[OBJ_MOD_WIS] > 0)
-		msg("You feel wiser!");
+		msg("You feel more joyous!");
 	else if (obj->modifiers[OBJ_MOD_WIS] < 0)
-		msg("You feel more naive!");
+		msg("You feel embittered!");
 	if (obj->modifiers[OBJ_MOD_DEX] > 0)
-		msg("You feel more dextrous!");
+		msg("You feel more loyal!");
 	else if (obj->modifiers[OBJ_MOD_DEX] < 0)
-		msg("You feel clumsier!");
+		msg("You feel more selfish!");
 	if (obj->modifiers[OBJ_MOD_CON] > 0)
-		msg("You feel healthier!");
+		msg("You feel more generous!");
 	else if (obj->modifiers[OBJ_MOD_CON] < 0)
-		msg("You feel sicklier!");
+		msg("You feel greedier!");
+	if (obj->modifiers[OBJ_MOD_CHA] > 0)
+		msg("You feel kinder!");
+	else if (obj->modifiers[OBJ_MOD_CHA] < 0)
+		msg("You feel meaner!");
 	if (obj->modifiers[OBJ_MOD_STEALTH] > 0)
 		msg("You feel stealthier.");
 	else if (obj->modifiers[OBJ_MOD_STEALTH] < 0)

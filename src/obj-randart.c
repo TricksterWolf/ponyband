@@ -85,7 +85,8 @@ static s16b art_idx_headgear[] = {
 	ART_IDX_HELM_ESP,
 	ART_IDX_HELM_SINV,
 	ART_IDX_HELM_WIS,
-	ART_IDX_HELM_INT
+	ART_IDX_HELM_INT,
+	ART_IDX_HELM_CHA
 };
 static s16b art_idx_shield[] = {
 	ART_IDX_SHIELD_AC,
@@ -567,6 +568,8 @@ static void remove_contradictory(struct artifact *art)
 			of_off(art->flags, OF_SUST_DEX);
 		if (art->modifiers[OBJ_MOD_CON] != 0)
 			of_off(art->flags, OF_SUST_CON);
+		if (art->modifiers[OBJ_MOD_CHA] != 0)
+			of_off(art->flags, OF_SUST_CHA);
 		art->modifiers[OBJ_MOD_BLOWS] = 0;
 	}
 
@@ -971,12 +974,13 @@ static void parse_frequencies(void)
 		if (art->modifiers[OBJ_MOD_WIS] > 0) temp++;
 		if (art->modifiers[OBJ_MOD_DEX] > 0) temp++;
 		if (art->modifiers[OBJ_MOD_CON] > 0) temp++;
+		if (art->modifiers[OBJ_MOD_CHA] > 0) temp++;
 
 		/* Handle a few special cases separately. */
 		if ((art->tval == TV_HELM || art->tval == TV_CROWN) &&
 			(art->modifiers[OBJ_MOD_WIS] > 0 ||
 			 art->modifiers[OBJ_MOD_INT] > 0)) {
-			/* Handle WIS and INT on helms and crowns */
+			/* Handle WIS, INT, and CHA on helms and crowns */
 			if (art->modifiers[OBJ_MOD_WIS] > 0) {
 				file_putf(log_file, "Adding 1 for WIS bonus on headgear.\n");
 				(artprobs[ART_IDX_HELM_WIS])++;
@@ -986,6 +990,12 @@ static void parse_frequencies(void)
 			if (art->modifiers[OBJ_MOD_INT] > 0) {
 				file_putf(log_file, "Adding 1 for INT bonus on headgear.\n");
 				(artprobs[ART_IDX_HELM_INT])++;
+				/* Counted this one separately so subtract it here */
+				temp--;
+			}
+			if (art->modifiers[OBJ_MOD_CHA] > 0) {
+				file_putf(log_file, "Adding 1 for CHA bonus on headgear.\n");
+				(artprobs[ART_IDX_HELM_CHA])++;
 				/* Counted this one separately so subtract it here */
 				temp--;
 			}
@@ -1020,7 +1030,7 @@ static void parse_frequencies(void)
 
 		if (flags_test(art->flags, OF_SIZE, OF_SUST_STR, OF_SUST_INT,
 		                     OF_SUST_WIS, OF_SUST_DEX, OF_SUST_CON,
-		                     FLAG_END)) {
+		                     OF_SUST_CHA, FLAG_END)) {
 			/* Now do sustains, in a similar manner */
 			temp = 0;
 			if (of_has(art->flags, OF_SUST_STR)) temp++;
@@ -1028,6 +1038,7 @@ static void parse_frequencies(void)
 			if (of_has(art->flags, OF_SUST_WIS)) temp++;
 			if (of_has(art->flags, OF_SUST_DEX)) temp++;
 			if (of_has(art->flags, OF_SUST_CON)) temp++;
+			if (of_has(art->flags, OF_SUST_CHA)) temp++;
 			file_putf(log_file, "Adding %d for stat sustains.\n", temp);
 			(artprobs[ART_IDX_GEN_SUST]) += temp;
 		}
@@ -1571,17 +1582,19 @@ static void add_stat(struct artifact *art)
 		art->modifiers[OBJ_MOD_INT] && 
 		art->modifiers[OBJ_MOD_WIS] && 
 		art->modifiers[OBJ_MOD_DEX] && 
-		art->modifiers[OBJ_MOD_CON])
+		art->modifiers[OBJ_MOD_CON] && 
+		art->modifiers[OBJ_MOD_CHA])
 			return;
 
 	/* Make sure we add one that hasn't been added yet */
 	while (!success) {
-		r = randint0(5);
+		r = randint0(6);
 		if (r == 0) success = add_fixed_pval_mod(art, OBJ_MOD_STR);
 		else if (r == 1) success = add_fixed_pval_mod(art, OBJ_MOD_INT);
 		else if (r == 2) success = add_fixed_pval_mod(art, OBJ_MOD_WIS);
 		else if (r == 3) success = add_fixed_pval_mod(art, OBJ_MOD_DEX);
 		else if (r == 4) success = add_fixed_pval_mod(art, OBJ_MOD_CON);
+		else if (r == 5) success = add_fixed_pval_mod(art, OBJ_MOD_CHA);
 	}
 }
 
@@ -1595,16 +1608,17 @@ static void add_sustain(struct artifact *art)
 
 	/* Break out if all stats are sustained to avoid an infinite loop */
 	if (flags_test_all(art->flags, OF_SIZE, OF_SUST_STR, OF_SUST_INT,
-	    OF_SUST_WIS, OF_SUST_DEX, OF_SUST_CON, FLAG_END))
+	    OF_SUST_WIS, OF_SUST_DEX, OF_SUST_CON, OF_SUST_CHA, FLAG_END))
 			return;
 
 	while (!success) {
-		r = randint0(5);
+		r = randint0(6);
 		if (r == 0) success = add_flag(art, OF_SUST_STR);
 		else if (r == 1) success = add_flag(art, OF_SUST_INT);
 		else if (r == 2) success = add_flag(art, OF_SUST_WIS);
 		else if (r == 3) success = add_flag(art, OF_SUST_DEX);
 		else if (r == 4) success = add_flag(art, OF_SUST_CON);
+		else if (r == 5) success = add_flag(art, OF_SUST_CHA);
 	}
 }
 
@@ -2136,6 +2150,10 @@ static void add_ability_aux(struct artifact *art, int r, s32b target_power)
 
 		case ART_IDX_HELM_INT:
 			add_fixed_pval_mod(art, OBJ_MOD_INT);
+			break;
+                        
+		case ART_IDX_HELM_CHA:
+			add_fixed_pval_mod(art, OBJ_MOD_CHA);
 			break;
 
 		case ART_IDX_SHIELD_LRES:

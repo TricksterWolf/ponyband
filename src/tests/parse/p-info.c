@@ -28,7 +28,7 @@ int test_name0(void *state) {
 }
 
 int test_stats0(void *state) {
-	enum parser_error r = parser_parse(state, "stats:1:-1:2:-2:3");
+	enum parser_error r = parser_parse(state, "stats:1:-1:2:-2:3:-3");
 	struct player_race *pr;
 
 	eq(r, PARSE_ERROR_NONE);
@@ -39,6 +39,7 @@ int test_stats0(void *state) {
 	eq(pr->r_adj[STAT_WIS], 2);
 	eq(pr->r_adj[STAT_DEX], -2);
 	eq(pr->r_adj[STAT_CON], 3);
+        eq(pr->r_adj[STAT_CHA], -3);
 	ok;
 }
 

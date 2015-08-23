@@ -3151,8 +3151,8 @@ desc: lure unsuspecting adventurers within reach of its venomous claws.
 mimic:potion:Healing
 mimic:potion:*Healing*
 mimic:potion:Life
-mimic:potion:Experience
-mimic:potion:Augmentation
+mimic:potion:Lessons Learned
+mimic:potion:Friendship
 mimic:potion:Speed
 
 name:225:Blink dog
@@ -4745,7 +4745,7 @@ desc:A strange creature that disguises itself as a discarded ring to lure
 desc: unsuspecting adventurers within reach of its venomous claws.
 mimic:ring:Speed
 mimic:ring:Slaying
-mimic:ring:Constitution
+mimic:ring:Generosity
 mimic:ring:Resist Poison
 mimic:ring:Free Action
 mimic:ring:See Invisible

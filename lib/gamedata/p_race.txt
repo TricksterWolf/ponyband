@@ -10,7 +10,7 @@
 
 # Format:
 # name:race number:race name
-# stats:str:int:wis:dex:con
+# stats:str:int:wis:dex:con:cha
 # skill-disarm:base
 # skill-device:base
 # skill-save:base
@@ -59,7 +59,7 @@
 
 
 name:0:Human
-stats:0:0:0:0:0
+stats:0:0:0:0:0:0
 skill-disarm:0
 skill-device:0
 skill-save:0
@@ -76,7 +76,7 @@ height:69:10
 weight:165:35
 
 name:1:Half-Elf
-stats:0:1:-1:1:-1
+stats:0:1:-1:1:-1:1
 skill-disarm:2
 skill-device:3
 skill-save:3
@@ -94,7 +94,7 @@ weight:115:25
 obj-flags:SUST_DEX
 
 name:2:Elf
-stats:-1:2:-1:1:-1
+stats:-1:2:-1:1:-1:2
 skill-disarm:5
 skill-device:6
 skill-save:6
@@ -113,7 +113,7 @@ obj-flags:SUST_DEX
 values:RES_LIGHT[1]
 
 name:3:Hobbit
-stats:-2:2:1:3:2
+stats:-2:2:1:3:2:1
 skill-disarm:15
 skill-device:18
 skill-save:18
@@ -132,7 +132,7 @@ obj-flags:HOLD_LIFE
 player-flags:KNOW_MUSHROOM
 
 name:4:Gnome
-stats:-1:2:0:2:1
+stats:-1:2:0:2:1:0
 skill-disarm:10
 skill-device:22
 skill-save:12
@@ -151,7 +151,7 @@ obj-flags:FREE_ACT
 player-flags:KNOW_ZAPPER
 
 name:5:Dwarf
-stats:2:-3:2:-2:2
+stats:2:-3:2:-2:2:-2
 skill-disarm:2
 skill-device:9
 skill-save:9
@@ -170,7 +170,7 @@ obj-flags:PROT_BLIND
 player-flags:SEE_ORE
 
 name:6:Half-Orc
-stats:2:-1:0:0:1
+stats:2:-1:0:0:1:-4
 skill-disarm:-3
 skill-device:-3
 skill-save:-3
@@ -188,7 +188,7 @@ weight:135:15
 values:RES_DARK[1]
 
 name:7:Half-Troll
-stats:4:-4:-2:-4:3
+stats:4:-4:-2:-4:3:-7
 skill-disarm:-5
 skill-device:-8
 skill-save:-8
@@ -206,7 +206,7 @@ weight:240:60
 obj-flags:SUST_STR | REGEN
 
 name:8:Dunadan
-stats:1:2:2:2:3
+stats:1:2:2:2:3:0
 skill-disarm:4
 skill-device:5
 skill-save:5
@@ -224,7 +224,7 @@ weight:190:20
 obj-flags:SUST_CON
 
 name:9:High-Elf
-stats:1:3:-1:3:1
+stats:1:3:-1:3:1:2
 skill-disarm:4
 skill-device:20
 skill-save:20
@@ -243,7 +243,7 @@ obj-flags:SEE_INVIS
 values:RES_LIGHT[1]
 
 name:10:Kobold
-stats:-1:-1:0:2:2
+stats:-1:-1:0:2:2:-3
 skill-disarm:10
 skill-device:5
 skill-save:0

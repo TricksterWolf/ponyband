@@ -234,9 +234,9 @@ static const char *get_flag_desc(bitflag flag)
 {
 	switch (flag)
 	{
-		case OF_SUST_STR: return "Sustains strength";
-		case OF_SUST_DEX: return "Sustains dexterity";
-		case OF_SUST_CON: return "Sustains constitution";
+		case OF_SUST_STR: return "Sustains honesty";
+		case OF_SUST_DEX: return "Sustains loyalty";
+		case OF_SUST_CON: return "Sustains generosity";
 		case OF_PROT_BLIND: return "Resists blindness";
 		case OF_HOLD_LIFE: return "Sustains experience";
 		case OF_FREE_ACT: return "Resists paralysis";

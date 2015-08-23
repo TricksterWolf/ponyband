@@ -93,7 +93,7 @@ static game_event_type statusline_events[] =
  */
 const char *stat_names[STAT_MAX] =
 {
-	"STR: ", "INT: ", "WIS: ", "DEX: ", "CON: "
+	"HON: ", "MAG: ", "LAU: ", "LOY: ", "GEN: ", "KIN: "
 };
 
 /**
@@ -101,7 +101,7 @@ const char *stat_names[STAT_MAX] =
  */
 const char *stat_names_reduced[STAT_MAX] =
 {
-	"Str: ", "Int: ", "Wis: ", "Dex: ", "Con: "
+	"Hon: ", "Mag: ", "Lau: ", "Loy: ", "Gen: ", "Kin: "
 };
 
 /**
@@ -109,18 +109,11 @@ const char *stat_names_reduced[STAT_MAX] =
  */
 void cnv_stat(int val, char *out_val, size_t out_len)
 {
-	/* Stats above 18 need special treatment*/
-	if (val > 18) {
-		int bonus = (val - 18);
-
-		if (bonus >= 220)
-			strnfmt(out_val, out_len, "18/***");
-		else if (bonus >= 100)
-			strnfmt(out_val, out_len, "18/%03d", bonus);
-		else
-			strnfmt(out_val, out_len, " 18/%02d", bonus);
+	/* Hacked to simplify stats */
+	if (val == 40) {
+            strnfmt(out_val, out_len, "  *40*");
 	} else {
-		strnfmt(out_val, out_len, "    %2d", val);
+            strnfmt(out_val, out_len, "   %2d ", val);
 	}
 }
 
@@ -161,7 +154,7 @@ static void prt_stat(int stat, int row, int col)
 	}
 
 	/* Indicate natural maximum */
-	if (player->stat_max[stat] == 18+100)
+	if (player->stat_max[stat] == 30)
 		put_str("!", row, col + 3);
 }
 
@@ -493,6 +486,7 @@ static void prt_dex(int row, int col) { prt_stat(STAT_DEX, row, col); }
 static void prt_wis(int row, int col) { prt_stat(STAT_WIS, row, col); }
 static void prt_int(int row, int col) { prt_stat(STAT_INT, row, col); }
 static void prt_con(int row, int col) { prt_stat(STAT_CON, row, col); }
+static void prt_cha(int row, int col) { prt_stat(STAT_CHA, row, col); }
 static void prt_race(int row, int col) { prt_field(player->race->name, row, col); }
 static void prt_class(int row, int col) { prt_field(player->class->name, row, col); }
 
@@ -518,6 +512,7 @@ static const struct side_handler_t
 	{ prt_wis,      4, EVENT_STATS },
 	{ prt_dex,      3, EVENT_STATS },
 	{ prt_con,      2, EVENT_STATS },
+	{ prt_cha,      1, EVENT_STATS },
 	{ NULL,        15, 0 },
 	{ prt_ac,       7, EVENT_AC },
 	{ prt_hp,       8, EVENT_HP },

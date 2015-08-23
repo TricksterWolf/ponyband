@@ -26,7 +26,7 @@ int test_stat_inc(void *state) {
 	struct player *p = state;
 	int v;
 
-	p->stat_cur[STAT_STR] = 18 + 101;
+	p->stat_cur[STAT_STR] = 31;
 	v = player_stat_inc(p, STAT_STR);
 	require(!v);
 	p->stat_cur[STAT_STR] = 15;
@@ -57,12 +57,12 @@ int test_stat_dec(void *state) {
 	player_stat_dec(p, STAT_STR, TRUE);
 	eq(p->stat_cur[STAT_STR], 13);
 	eq(p->stat_max[STAT_STR], 14);
-        p->stat_cur[STAT_STR] = 18+13;
-	p->stat_max[STAT_STR] = 18+13;
+        p->stat_cur[STAT_STR] = 20;
+	p->stat_max[STAT_STR] = 20;
 	player_stat_dec(p, STAT_STR, FALSE);
-	eq(p->stat_cur[STAT_STR], 18+03);
-	eq(p->stat_max[STAT_STR], 18+13);
-	p->stat_max[STAT_STR] = 18+03;
+	eq(p->stat_cur[STAT_STR], 19);
+	eq(p->stat_max[STAT_STR], 20);
+	p->stat_max[STAT_STR] = 19;
 	player_stat_dec(p, STAT_STR, TRUE);
 	eq(p->stat_cur[STAT_STR], 18);
 	eq(p->stat_max[STAT_STR], 18);

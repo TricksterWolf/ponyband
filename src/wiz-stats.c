@@ -113,6 +113,7 @@ typedef enum stat_code
 	ST_WIS_ARMOR,
 	ST_DEX_ARMOR,
 	ST_CON_ARMOR,
+        ST_CHA_ARMOR,
 	ST_CURSED_ARMOR,
 	ST_WEAPONS,
 	ST_BAD_WEAPONS,
@@ -173,6 +174,7 @@ typedef enum stat_code
 	ST_CURSED_RINGS,
 	ST_AMULETS,
 	ST_WIS_AMULETS,
+        ST_CHA_AMULETS,
 	ST_TELEP_AMULETS,
 	ST_ENDGAME_AMULETS,
 	ST_CURSED_AMULETS,
@@ -224,11 +226,12 @@ static const struct stat_data stat_message[] =
 	{ST_BAD_ARMOR, " Bad         "},
 	{ST_AVERAGE_ARMOR, " Average     "},
 	{ST_GOOD_ARMOR, " Good        "},	
-	{ST_STR_ARMOR, " +Strength   "},
-	{ST_INT_ARMOR, " +Intel.     "},
-	{ST_WIS_ARMOR, " +Wisdom     "},
-	{ST_DEX_ARMOR, " +Dexterity  "},
-	{ST_CON_ARMOR, " +Const.     "},
+	{ST_STR_ARMOR, " +Honesty    "},
+	{ST_INT_ARMOR, " +Magic      "},
+	{ST_WIS_ARMOR, " +Laughter   "},
+	{ST_DEX_ARMOR, " +Loyalty    "},
+	{ST_CON_ARMOR, " +Generosity "},
+	{ST_CHA_ARMOR, " +Kindness   "},
 	{ST_CURSED_ARMOR, " Cursed       "},
 	{ST_WEAPONS, "\n ***WEAPONS***   \n All:       "},
 	{ST_BAD_WEAPONS, " Bad         "},
@@ -288,7 +291,8 @@ static const struct stat_data stat_message[] =
 	{ST_ONE_RINGS, " The One     "},
 	{ST_CURSED_RINGS, " Cursed      "},
 	{ST_RINGS, "\n ***AMULETS***   \n All:        "},
-	{ST_WIS_AMULETS, " Wisdom      "},
+	{ST_WIS_AMULETS, " Laughter    "},
+	{ST_CHA_AMULETS, " Kindness    "},
 	{ST_TELEP_AMULETS, " Telepathy   "},
 	{ST_ENDGAME_AMULETS, " Endgame     "},//Trickery, weaponmastery, magi
 	{ST_CURSED_AMULETS, " Cursed      "},
@@ -593,6 +597,9 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 
 			if (obj->modifiers[OBJ_MOD_CON] != 0)
 				add_stats(ST_CON_ARMOR, vault, mon, number);
+                        
+			if (obj->modifiers[OBJ_MOD_CHA] != 0)
+				add_stats(ST_CHA_ARMOR, vault, mon, number);
 
 			if (of_has(obj->flags, OF_LIGHT_CURSE))
 				add_stats(ST_CURSED_ARMOR, vault, mon, number);
@@ -737,11 +744,12 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 			add_stats(ST_POTIONS, vault, mon, number);
 
 			/* Stat gain */
-			if (strstr(obj->kind->name, "Strength") ||
-				strstr(obj->kind->name, "Intelligence") ||
-				strstr(obj->kind->name, "Wisdom") ||
-				strstr(obj->kind->name, "Dexterity") ||
-				strstr(obj->kind->name, "Constitution")) {
+			if (strstr(obj->kind->name, "Honesty") ||
+				strstr(obj->kind->name, "Magic") ||
+				strstr(obj->kind->name, "Laughter") ||
+				strstr(obj->kind->name, "Loyalty") ||
+				strstr(obj->kind->name, "Generosity") ||
+				strstr(obj->kind->name, "Kindness")) {
 				add_stats(ST_GAINSTAT_POTIONS, vault, mon, number);
 			} else if (strstr(obj->kind->name, "Augmentation")) {
 				/* Augmentation counts as 5 stat gain pots */
@@ -843,10 +851,10 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 
 			if (strstr(obj->kind->name, "Speed")) {
 				add_stats(ST_SPEEDS_RINGS, vault, mon, number);
-			} else if ((strstr(obj->kind->name, "Strength")) ||
-					   (strstr(obj->kind->name, "Intelligence")) ||
-					   (strstr(obj->kind->name, "Dexterity")) ||
-					   (strstr(obj->kind->name, "Constitution"))) {
+			} else if ((strstr(obj->kind->name, "Honesty")) ||
+					   (strstr(obj->kind->name, "Magic")) ||
+					   (strstr(obj->kind->name, "Loyalty")) ||
+					   (strstr(obj->kind->name, "Generosity"))) {
 				add_stats(ST_STAT_RINGS, vault, mon, number);
 			} else if (strstr(obj->kind->name, "Resist Poison")) {
 				add_stats(ST_RPOIS_RINGS, vault, mon, number);
@@ -875,8 +883,10 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 
 			add_stats(ST_AMULETS, vault, mon, number);
 
-			if (strstr(obj->kind->name, "Wisdom")) {
+			if (strstr(obj->kind->name, "Laughter")) {
 				add_stats(ST_WIS_AMULETS, vault, mon, number);
+			if (strstr(obj->kind->name, "Kindness")) {
+				add_stats(ST_CHA_AMULETS, vault, mon, number);
 			} else if ((strstr(obj->kind->name, "Magi")) || 
 					   (strstr(obj->kind->name, "Trickery")) ||
 					   (strstr(obj->kind->name, "Weaponmastery"))) {

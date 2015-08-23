@@ -10,7 +10,7 @@
 
 # Format:
 # name:class number:class name
-# stats:str:int:wis:dex:con
+# stats:str:int:wis:dex:con:cha
 # skill-disarm:base:increment
 # skill-device:base:increment
 # skill-save:base:increment
@@ -97,7 +97,7 @@
 
 ############### WARRIOR ###############
 name:0:Warrior
-stats:3:-2:-2:2:2
+stats:3:-2:-2:2:2:-2
 skill-disarm:25:10
 skill-device:18:7
 skill-save:18:10
@@ -133,7 +133,7 @@ magic:0:0:0:0
 
 ############### MAGE ###############
 name:1:Mage
-stats:-3:3:0:0:-2
+stats:-3:3:0:0:-2:0
 skill-disarm:30:7
 skill-device:36:13
 skill-save:30:9
@@ -597,7 +597,7 @@ desc: damage to each monster in its area of effect.
 
 ############### PRIEST ###############
 name:2:Priest
-stats:-1:-3:3:-1:1
+stats:-1:-3:3:-1:1:1
 skill-disarm:25:7
 skill-device:30:10
 skill-save:32:12
@@ -982,6 +982,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 desc:Restores to maximum all stats that are currently below maximum.
 
 spell:Remembrance:35:70:90:250
@@ -1066,7 +1067,7 @@ desc: undead, a demon, an elemental, a golem, or a vortex.
 
 ############### ROGUE ###############
 name:3:Rogue
-stats:0:1:-3:3:-1
+stats:0:1:-3:3:-1:-1
 skill-disarm:45:15
 skill-device:32:10
 skill-save:28:10
@@ -1394,7 +1395,7 @@ desc:  Uniques or monsters that resist confusion are not affected.
 
 ############### RANGER ###############
 name:4:Ranger
-stats:0:2:-2:1:-1
+stats:0:2:-2:1:-1:1
 skill-disarm:30:8
 skill-device:32:10
 skill-save:28:10
@@ -1841,7 +1842,7 @@ desc:  This spell has no effect when used in the town.
 
 ############### PALADIN ###############
 name:5:Paladin
-stats:1:-3:1:-1:2
+stats:1:-3:1:-1:2:2
 skill-disarm:20:7
 skill-device:24:10
 skill-save:25:11
@@ -2185,6 +2186,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 desc:Restores to maximum all stats that are currently below maximum.
 
 book:prayer book:[Holy Infusions]:5:2

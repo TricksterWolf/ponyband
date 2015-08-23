@@ -2948,6 +2948,7 @@ static enum parser_error parse_p_race_stats(struct parser *p) {
 	r->r_adj[STAT_CON] = parser_getint(p, "con");
 	r->r_adj[STAT_INT] = parser_getint(p, "int");
 	r->r_adj[STAT_WIS] = parser_getint(p, "wis");
+	r->r_adj[STAT_CHA] = parser_getint(p, "cha");        
 	return PARSE_ERROR_NONE;
 }
 
@@ -3141,7 +3142,7 @@ struct parser *init_parse_p_race(void) {
 	struct parser *p = parser_new();
 	parser_setpriv(p, NULL);
 	parser_reg(p, "name uint index str name", parse_p_race_name);
-	parser_reg(p, "stats int str int int int wis int dex int con", parse_p_race_stats);
+	parser_reg(p, "stats int str int int int wis int dex int con int cha", parse_p_race_stats);  // WIS
 	parser_reg(p, "skill-disarm int disarm", parse_p_race_skill_disarm);
 	parser_reg(p, "skill-device int device", parse_p_race_skill_device);
 	parser_reg(p, "skill-save int save", parse_p_race_skill_save);
@@ -3217,6 +3218,7 @@ static enum parser_error parse_class_stats(struct parser *p) {
 	c->c_adj[STAT_WIS] = parser_getint(p, "wis");
 	c->c_adj[STAT_DEX] = parser_getint(p, "dex");
 	c->c_adj[STAT_CON] = parser_getint(p, "con");
+	c->c_adj[STAT_CHA] = parser_getint(p, "cha");
 	return PARSE_ERROR_NONE;
 }
 
@@ -3307,6 +3309,24 @@ static enum parser_error parse_class_skill_dig(struct parser *p) {
 		return PARSE_ERROR_MISSING_RECORD_HEADER;
 	c->c_skills[SKILL_DIGGING] = parser_getint(p, "base");
 	c->x_skills[SKILL_DIGGING] = parser_getint(p, "incr");
+	return PARSE_ERROR_NONE;
+}
+
+static enum parser_error parse_class_skill_empathy(struct parser *p) {
+	struct player_class *c = parser_priv(p);
+	if (!c)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	c->c_skills[SKILL_EMPATHY] = parser_getint(p, "base");
+	c->x_skills[SKILL_EMPATHY] = parser_getint(p, "incr");
+	return PARSE_ERROR_NONE;
+}
+
+static enum parser_error parse_class_skill_maxpets(struct parser *p) {
+	struct player_class *c = parser_priv(p);
+	if (!c)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	c->c_skills[SKILL_MAXPETS] = parser_getint(p, "base");
+	c->x_skills[SKILL_MAXPETS] = parser_getint(p, "incr");
 	return PARSE_ERROR_NONE;
 }
 
@@ -3605,7 +3625,7 @@ struct parser *init_parse_class(void) {
 	struct parser *p = parser_new();
 	parser_setpriv(p, NULL);
 	parser_reg(p, "name uint index str name", parse_class_name);
-	parser_reg(p, "stats int str int int int wis int dex int con", parse_class_stats);
+	parser_reg(p, "stats int str int int int wis int dex int con int cha", parse_class_stats);  // WIS
 	parser_reg(p, "skill-disarm int base int incr", parse_class_skill_disarm);
 	parser_reg(p, "skill-device int base int incr", parse_class_skill_device);
 	parser_reg(p, "skill-save int base int incr", parse_class_skill_save);
@@ -3616,6 +3636,8 @@ struct parser *init_parse_class(void) {
 	parser_reg(p, "skill-shoot int base int incr", parse_class_skill_shoot);
 	parser_reg(p, "skill-throw int base int incr", parse_class_skill_throw);
 	parser_reg(p, "skill-dig int base int incr", parse_class_skill_dig);
+        parser_reg(p, "skill-empathy int base int incr", parse_class_skill_empathy);
+        parser_reg(p, "skill-maxpets int base int incr", parse_class_skill_maxpets);
 	parser_reg(p, "info int mhp int exp int sense-base int sense-div", parse_class_info);
 	parser_reg(p, "attack int max-attacks int min-weight int att-multiply", parse_class_attack);
 	parser_reg(p, "title str title", parse_class_title);

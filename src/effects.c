@@ -3843,6 +3843,7 @@ bool effect_handler_BIZARRE(effect_handler_context_t *context)
 			player_stat_dec(player, STAT_WIS, TRUE);
 			player_stat_dec(player, STAT_DEX, TRUE);
 			player_stat_dec(player, STAT_CON, TRUE);
+			player_stat_dec(player, STAT_CHA, TRUE);                        
 
 			/* Lose some experience (permanently) */
 			player_exp_lose(player, player->exp / 4, TRUE);

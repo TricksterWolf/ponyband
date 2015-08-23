@@ -25,6 +25,7 @@
 #include "obj-info.h"
 #include "obj-util.h"
 #include "player.h"
+#include "player-calcs.h"
 #include "player-timed.h"
 #include "player-util.h"
 #include "store.h"
@@ -186,7 +187,7 @@ static const char *likert(int x, int y, byte *attr)
 		}
 		default:
 		{
-			*attr = COLOUR_L_GREEN;
+			*attr = COLOUR_L_BLUE;
 			return ("Legendary");
 		}
 	}
@@ -434,7 +435,7 @@ void display_player_stat_info(void)
 			put_str(stat_names[i], row+i, col);
 
 		/* Indicate natural maximum */
-		if (player->stat_max[i] == 18+100)
+		if (player->stat_max[i] == 30)
 			put_str("!", row+i, col+3);
 
 		/* Internal "natural" maximum value */
@@ -764,7 +765,7 @@ static struct panel *get_panel_combat(void) {
 }
 
 static struct panel *get_panel_skills(void) {
-	struct panel *p = panel_allocate(7);
+	struct panel *p = panel_allocate(9);
 
 	int skill;
 	byte attr;
@@ -806,6 +807,15 @@ static struct panel *get_panel_skills(void) {
 	/* Infravision */
 	panel_line(p, COLOUR_L_GREEN, "Infravision", "%d ft",
 			player->state.see_infra * 10);
+        
+        /* Empathy */
+        desc = likert(player->state.skills[SKILL_EMPATHY] - 5, 52, &attr);
+	panel_line(p, attr, "Empathy", "%s", desc);
+        
+        /* Pet Limit */
+        skill = player->state.skills[SKILL_MAXPETS];
+        likert((skill - 1) * 30, 20, &attr);
+        panel_line(p, attr, "Maximum Pets", "%d", skill);
 
 	return p;
 }
@@ -839,7 +849,7 @@ static const struct {
 	{ { 21, 1, 18, 3 }, FALSE, get_panel_misc },	/* Age, ht, wt, ... */
 	{ {  1, 9, 24, 9 }, FALSE, get_panel_midleft },	/* Cur Exp, Max Exp, ... */
 	{ { 29, 9, 19, 9 }, FALSE, get_panel_combat },
-	{ { 52, 9, 20, 8 }, FALSE, get_panel_skills },
+	{ { 52, 9, 20, 9 }, FALSE, get_panel_skills },
 };
 
 void display_player_xtra_info(void)

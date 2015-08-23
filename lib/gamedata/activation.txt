@@ -142,6 +142,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 effect:HEAL_HP
 dice:5000
 desc:heals 5000 hit points, restores experience and stats, heals cut damage, and cures stunning, poison, blindness, and confusion
@@ -198,70 +199,83 @@ effect:RESTORE_MANA
 desc:restores your mana points to maximum
 
 
-name:BRAWN
+name:INTEGRITY
 aim:0
 power:30
 effect:GAIN_STAT:STR
 effect:LOSE_RANDOM_STAT:STR
-desc:raises your strength at the expense of a random attribute
+desc:raises your honesty at the expense of a random attribute
 
-name:INTELLECT
+name:SORCERY
 aim:0
 power:25
 effect:GAIN_STAT:INT
 effect:LOSE_RANDOM_STAT:INT
-desc:raises your intelligence at the expense of a random attribute
+desc:raises your magic at the expense of a random attribute
 
-name:CONTEMPLATION
+name:GIGGLES
 aim:0
 power:25
 effect:GAIN_STAT:WIS
 effect:LOSE_RANDOM_STAT:WIS
-desc:raises your wisdom at the expense of a random attribute
+desc:raises your laughter at the expense of a random attribute
 
-name:TOUGHNESS
+name:CHARITY
 aim:0
 power:30
 effect:GAIN_STAT:CON
 effect:LOSE_RANDOM_STAT:CON
-desc:raises your constitution at the expense of a random attribute
+desc:raises your generosity at the expense of a random attribute
 
-name:NIMBLENESS
+name:DEVOTION
 aim:0
 power:25
 effect:GAIN_STAT:DEX
 effect:LOSE_RANDOM_STAT:DEX
-desc:raises your dexterity at the expense of a random attribute
+desc:raises your loyalty at the expense of a random attribute
+
+name:AFFECTION
+aim:0
+power:25
+effect:GAIN_STAT:CHA
+effect:LOSE_RANDOM_STAT:CHA
+desc:raises your kindness at the expense of a random attribute
 
 name:RESTORE_STR
 aim:0
 power:10
 effect:RESTORE_STAT:STR
-desc:restores your strength
+desc:restores your honesty
 
 name:RESTORE_INT
 aim:0
 power:8
 effect:RESTORE_STAT:INT
-desc:restores your intelligence
+desc:restores your magic
 
 name:RESTORE_WIS
 aim:0
 power:8
 effect:RESTORE_STAT:WIS
-desc:restores your wisdom
+desc:restores your laughter
 
 name:RESTORE_DEX
 aim:0
 power:9
 effect:RESTORE_STAT:DEX
-desc:restores your dexterity
+desc:restores your loyalty
 
 name:RESTORE_CON
 aim:0
 power:10
 effect:RESTORE_STAT:CON
-desc:restores your constitution
+desc:restores your generosity
+
+name:RESTORE_CHA
+aim:0
+power:10
+effect:RESTORE_STAT:CHA
+desc:restores your kindness
 
 name:RESTORE_ALL
 aim:0
@@ -271,6 +285,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 desc:restores all your stats
 
 
@@ -282,6 +297,7 @@ effect:RESTORE_STAT:INT
 effect:RESTORE_STAT:WIS
 effect:RESTORE_STAT:DEX
 effect:RESTORE_STAT:CON
+effect:RESTORE_STAT:CHA
 effect:RESTORE_EXP
 desc:restores all your stats and your experience points
 

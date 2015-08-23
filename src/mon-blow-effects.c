@@ -634,6 +634,16 @@ static void melee_effect_handler_LOSE_CON(melee_effect_handler_context_t *contex
 	melee_effect_stat(context, STAT_CON);
 }
 
+
+/**
+ * Melee effect handler: Drain the player's charisma.
+ */
+static void melee_effect_handler_LOSE_CHA(melee_effect_handler_context_t *context)
+{
+	melee_effect_stat(context, STAT_CHA);
+}
+
+
 /**
  * Melee effect handler: Drain all of the player's stats.
  */
@@ -648,6 +658,7 @@ static void melee_effect_handler_LOSE_ALL(melee_effect_handler_context_t *contex
 	effect_simple(EF_DRAIN_STAT, "0", STAT_CON, 0, 0, &context->obvious);
 	effect_simple(EF_DRAIN_STAT, "0", STAT_INT, 0, 0, &context->obvious);
 	effect_simple(EF_DRAIN_STAT, "0", STAT_WIS, 0, 0, &context->obvious);
+	effect_simple(EF_DRAIN_STAT, "0", STAT_CHA, 0, 0, &context->obvious);
 }
 
 /**

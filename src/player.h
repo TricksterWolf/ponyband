@@ -76,7 +76,7 @@ enum
 
 /**
  * The range of possible indexes into tables based upon stats.
- * Currently things range from 3 to 18/220 = 40.
+ * Currently things range from 3 to 40.
  */
 #define STAT_RANGE 38
 
@@ -132,7 +132,8 @@ enum
 	SKILL_TO_HIT_BOW,		/* Skill: To hit (shooting) */
 	SKILL_TO_HIT_THROW,		/* Skill: To hit (throwing) */
 	SKILL_DIGGING,			/* Skill: Digging */
-
+        SKILL_EMPATHY,                  /* Skill: Animal empathy */
+        SKILL_MAXPETS,                   /* Skill: Maximum pets */
 	SKILL_MAX
 };
 

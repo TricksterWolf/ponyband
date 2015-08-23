@@ -316,11 +316,13 @@ void get_attack_colors(int melee_colors[RBE_MAX], int spell_colors[RSF_MAX])
 		melee_colors[RBE_LOSE_DEX] = COLOUR_ORANGE;
 	if (!of_has(st.flags, OF_SUST_CON))
 		melee_colors[RBE_LOSE_CON] = COLOUR_ORANGE;
+	if (!of_has(st.flags, OF_SUST_CHA))
+		melee_colors[RBE_LOSE_CHA] = COLOUR_ORANGE;
 
 	/* Drain all gets a red warning */
 	if (!of_has(st.flags, OF_SUST_STR) || !of_has(st.flags, OF_SUST_INT) ||
 			!of_has(st.flags, OF_SUST_WIS) || !of_has(st.flags, OF_SUST_DEX) ||
-			!of_has(st.flags, OF_SUST_CON))
+			!of_has(st.flags, OF_SUST_CON) || !of_has(st.flags, OF_SUST_CHA))
 		melee_colors[RBE_LOSE_ALL] = COLOUR_L_RED;
 
 	/* Hold life isn't 100% effective */
