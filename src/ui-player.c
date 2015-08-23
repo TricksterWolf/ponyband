@@ -791,7 +791,7 @@ static struct panel *get_panel_skills(void) {
 
 	/* Search frequency */
 	skill = MAX(player->state.skills[SKILL_SEARCH_FREQUENCY], 1);
-	if (skill >= 50) {
+	if (skill >= 49) {
 		panel_line(p, colour_table[10], "Perception", "1 in 1");
 	} else {
 		/* convert to chance of searching */
@@ -805,11 +805,17 @@ static struct panel *get_panel_skills(void) {
 	panel_line(p, colour_table[skill / 10], "Searching", "%d%%", skill);
 
 	/* Infravision */
-	panel_line(p, COLOUR_L_GREEN, "Infravision", "%d ft",
-			player->state.see_infra * 10);
+        int infra = player->state.see_infra;
+        int colour = COLOUR_L_RED;
+        if (infra > 15) colour = COLOUR_L_BLUE;
+        else if (infra > 9) colour = COLOUR_L_GREEN;
+        else if (infra > 6) colour = COLOUR_GREEN;
+        else if (infra > 3) colour = COLOUR_YELLOW;
+        else if (infra > 0) colour = COLOUR_ORANGE;
+	panel_line(p, colour, "Infravision", "%d ft", infra * 10);
         
         /* Empathy */
-        desc = likert(player->state.skills[SKILL_EMPATHY] - 5, 52, &attr);
+        desc = likert((player->state.skills[SKILL_EMPATHY]-5) * 10, 55, &attr);
 	panel_line(p, attr, "Empathy", "%s", desc);
         
         /* Pet Limit */

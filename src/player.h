@@ -124,16 +124,17 @@ enum
 {
 	SKILL_DISARM,			/* Skill: Disarming */
 	SKILL_DEVICE,			/* Skill: Magic Devices */
-	SKILL_SAVE,				/* Skill: Saving throw */
+	SKILL_SAVE,			/* Skill: Saving throw */
 	SKILL_STEALTH,			/* Skill: Stealth factor */
 	SKILL_SEARCH,			/* Skill: Searching ability */
-	SKILL_SEARCH_FREQUENCY,	/* Skill: Searching frequency */
+	SKILL_SEARCH_FREQUENCY,		/* Skill: Searching frequency */
 	SKILL_TO_HIT_MELEE,		/* Skill: To hit (normal) */
 	SKILL_TO_HIT_BOW,		/* Skill: To hit (shooting) */
 	SKILL_TO_HIT_THROW,		/* Skill: To hit (throwing) */
 	SKILL_DIGGING,			/* Skill: Digging */
-        SKILL_EMPATHY,                  /* Skill: Animal empathy */
-        SKILL_MAXPETS,                   /* Skill: Maximum pets */
+        SKILL_GOLD,			/* Skill: Selling adjustment */
+        SKILL_EMPATHY,			/* Skill: Animal empathy */
+        SKILL_MAXPETS,			/* Skill: Maximum pets */
 	SKILL_MAX
 };
 

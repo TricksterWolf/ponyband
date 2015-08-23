@@ -560,7 +560,7 @@ static bool store_will_buy(struct store *store, const struct object *obj)
 int price_item(struct store *store, const struct object *obj,
 			   bool store_buying, int qty)
 {
-	int adjust = 100;
+	int adjust = player->state.skills[SKILL_GOLD];
 	int price;
 	struct owner *proprietor;
 
@@ -578,21 +578,22 @@ int price_item(struct store *store, const struct object *obj,
 	if (price <= 0) return (0L);
 
 	/* The black market is always a worse deal */
-	if (store->sidx == STORE_B_MARKET)
-		adjust = 150;
+//	if (store->sidx == STORE_B_MARKET)
+//		adjust += 150;
 
 	/* Shop is buying */
 	if (store_buying) {
-		/* Set the factor */
-		adjust = 100 + (100 - adjust);
-		if (adjust > 100) adjust = 100;
+//		/* Set the factor */
+//		adjust = 100 - (100 + adjust);
 
 		/* Shops now pay 2/3 of true value */
 		price = price * 2 / 3;
 
 		/* Black market sucks */
-		if (store->sidx == STORE_B_MARKET)
+		if (store->sidx == STORE_B_MARKET) {
 			price = price / 2;
+                        adjust = adjust / 2;
+                }
 
 		/* Check for no_selling option */
 		if (OPT(birth_no_selling)) return (0L);
@@ -608,12 +609,14 @@ int price_item(struct store *store, const struct object *obj,
 		}
 
 		/* Black market sucks */
-		if (store->sidx == STORE_B_MARKET)
+		if (store->sidx == STORE_B_MARKET) {
 			price = price * 2;
+                        adjust += 150;
+                }
 	}
 
 	/* Compute the final price (with rounding) */
-	price = (price * adjust + 50L) / 100L;
+	price = ((long)price * (long)adjust + 50L) / 100L;
 
 	/* Now convert price to total price for non-wands */
 	if (!tval_can_have_charges(obj))

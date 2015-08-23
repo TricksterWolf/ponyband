@@ -2220,6 +2220,9 @@ void calc_bonuses(struct player *p, struct player_state *state, bool known_only)
 
 	/* Apply Skill -- Extract noise from stealth */
 	state->noise = (1L << (30 - state->skills[SKILL_STEALTH]));
+
+	/* Affect Skill -- gold (CHA) */
+	state->skills[SKILL_GOLD] += adj_cha_gold[state->stat_ind[STAT_CHA]];
         
 	/* Affect Skill -- empathy (CHA) */
 	state->skills[SKILL_EMPATHY] += adj_cha_empathy[state->stat_ind[STAT_CHA]];

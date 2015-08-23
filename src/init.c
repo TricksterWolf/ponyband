@@ -3312,6 +3312,15 @@ static enum parser_error parse_class_skill_dig(struct parser *p) {
 	return PARSE_ERROR_NONE;
 }
 
+static enum parser_error parse_class_skill_gold(struct parser *p) {
+	struct player_class *c = parser_priv(p);
+	if (!c)
+		return PARSE_ERROR_MISSING_RECORD_HEADER;
+	c->c_skills[SKILL_GOLD] = parser_getint(p, "base");
+	c->x_skills[SKILL_GOLD] = parser_getint(p, "incr");
+	return PARSE_ERROR_NONE;
+}
+
 static enum parser_error parse_class_skill_empathy(struct parser *p) {
 	struct player_class *c = parser_priv(p);
 	if (!c)
@@ -3636,6 +3645,7 @@ struct parser *init_parse_class(void) {
 	parser_reg(p, "skill-shoot int base int incr", parse_class_skill_shoot);
 	parser_reg(p, "skill-throw int base int incr", parse_class_skill_throw);
 	parser_reg(p, "skill-dig int base int incr", parse_class_skill_dig);
+        parser_reg(p, "skill-gold int base int incr", parse_class_skill_gold);
         parser_reg(p, "skill-empathy int base int incr", parse_class_skill_empathy);
         parser_reg(p, "skill-maxpets int base int incr", parse_class_skill_maxpets);
 	parser_reg(p, "info int mhp int exp int sense-base int sense-div", parse_class_info);
