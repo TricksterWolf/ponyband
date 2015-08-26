@@ -324,7 +324,7 @@ bool tval_is_book_k(const struct object_kind *kind)
 {
 	switch (kind->tval) {
 		case TV_MAGIC_BOOK:
-		case TV_PRAYER_BOOK:
+		case TV_TOTEM_BOOK:
 			return TRUE;
 		default:
 			return FALSE;

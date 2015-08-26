@@ -129,10 +129,10 @@ owner:25000:Delilah the Pure (Elf)
 owner:30000:Bosk the Wise (Dwarf)
 slots:6:14
 turnover:9
-always:prayer book:[Beginners Handbook]
-always:prayer book:[Words of Wisdom]
-always:prayer book:[Chants and Blessings]
-always:prayer book:[Exorcism and Dispelling]
+always:totem:[Beginners Handbook]
+always:totem:[Words of Wisdom]
+always:totem:[Chants and Blessings]
+always:totem:[Exorcism and Dispelling]
 always:potion:Cure Light Wounds
 normal:hafted:Whip
 normal:hafted:Quarterstaff
@@ -150,7 +150,7 @@ normal:potion:Heroism
 normal:potion:Neutralize Poison
 normal:potion:Cure Serious Wounds
 normal:potion:Cure Critical Wounds
-buy:prayer book
+buy:totem
 buy:scroll
 buy:potion
 buy:hafted

@@ -150,8 +150,8 @@ static struct menu race_menu, class_menu, roller_menu;
 
 #define QUESTION_COL     2
 #define RACE_COL         2
-#define RACE_AUX_COL    19
-#define CLASS_COL       19
+#define RACE_AUX_COL    22
+#define CLASS_COL       22
 #define CLASS_AUX_COL   36
 #define ROLLER_COL      36
 #define HIST_INSTRUCT_ROW 18
@@ -162,7 +162,7 @@ static struct menu race_menu, class_menu, roller_menu;
  * upper left column and row, width, and lower column
  */
 static region race_region = {RACE_COL, TABLE_ROW, 17, MENU_ROWS};
-static region class_region = {CLASS_COL, TABLE_ROW, 17, MENU_ROWS};
+static region class_region = {CLASS_COL, TABLE_ROW, 14, MENU_ROWS};
 static region roller_region = {ROLLER_COL, TABLE_ROW, 34, MENU_ROWS};
 
 /**
@@ -242,6 +242,9 @@ static const char *get_flag_desc(bitflag flag)
 		case OF_FREE_ACT: return "Resists paralysis";
 		case OF_REGEN: return "Regenerates quickly";
 		case OF_SEE_INVIS: return "Sees invisible creatures";
+                case OF_FEATHER: return "Feather falling";
+                case OF_PROT_FEAR: return "Gains immunity to fear";
+                case OF_SLOW_DIGEST: return "Slow metabolism";
 
 		default: return "Undocumented flag";
 	}
@@ -252,8 +255,27 @@ static const char *get_resist_desc(int element)
 	switch (element)
 	{
 		case ELEM_POIS: return "Resists poison";
-		case ELEM_LIGHT: return "Resists light damage";
-		case ELEM_DARK: return "Resists darkness damage";
+		case ELEM_LIGHT: return "Resists bright light";
+		case ELEM_DARK: return "Resists darkness";
+                case ELEM_ELEC: return "Resists electricity";
+                case ELEM_COLD: return "Resists cold";
+                case ELEM_ACID: return "Resists acid";
+                case ELEM_FIRE: return "Resists fire";
+                case ELEM_NETHER: return "Resists nether";
+
+		default: return "Undocumented element";
+	}
+}
+
+static const char *get_immune_desc(int element)
+{
+	switch (element)
+	{
+		case ELEM_POIS: return "Immunity to poison";
+                case ELEM_ELEC: return "Immunity to electricity";
+                case ELEM_COLD: return "Immunity to cold";
+                case ELEM_ACID: return "Immunity to acid";
+                case ELEM_FIRE: return "Immunity to fire";
 
 		default: return "Undocumented element";
 	}
@@ -279,7 +301,7 @@ static void race_help(int i, void *db, const region *l)
 	int len = (STAT_MAX + 1) / 2;
 
 	int n_flags = 0;
-	int flag_space = 3;
+	int flag_space = 10;
 
 	if (!r) return;
 
@@ -322,6 +344,13 @@ static void race_help(int i, void *db, const region *l)
 		text_out_e("\n%s", get_resist_desc(k));
 		n_flags++;
 	}
+        
+	for (k = 0; k < ELEM_MAX; k++) {
+		if (n_flags >= flag_space) break;
+		if (r->el_info[k].res_level != 3) continue;
+		text_out_e("\n%s", get_immune_desc(k));
+		n_flags++;
+	}        
 
 	for (k = 0; k < PF_MAX; k++) {
 		if (n_flags >= flag_space) break;
@@ -348,7 +377,7 @@ static void class_help(int i, void *db, const region *l)
 	int len = (STAT_MAX + 1) / 2;
 
 	int n_flags = 0;
-	int flag_space = 5;
+	int flag_space = 11;
 
 	if (!c) return;
 
@@ -380,7 +409,8 @@ static void class_help(int i, void *db, const region *l)
 			   r->r_exp + c->c_exp, -1);
 
 	if (c->magic.spell_realm->index != REALM_NONE)
-		text_out_e("\nLearns %s magic", c->magic.spell_realm->adjective);
+		text_out_e("\nLearns %s %ss", c->magic.spell_realm->adjective,
+                        c->magic.spell_realm->spell_noun);
 
 	for (k = 0; k < PF_MAX; k++) {
 		const char *s;

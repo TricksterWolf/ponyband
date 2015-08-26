@@ -3834,28 +3834,28 @@ combat:0:1d1:0:0:0
 
 name:464:[Beginners Handbook]
 graphics:?:G
-type:prayer book
+type:totem
 properties:1:30:25
 alloc:40:1 to 100
 combat:0:1d1:0:0:0
 
 name:465:[Words of Wisdom]
 graphics:?:G
-type:prayer book
+type:totem
 properties:5:30:100
 alloc:40:5 to 100
 combat:0:1d1:0:0:0
 
 name:466:[Chants and Blessings]
 graphics:?:G
-type:prayer book
+type:totem
 properties:10:30:400
 alloc:40:10 to 100
 combat:0:1d1:0:0:0
 
 name:467:[Exorcism and Dispelling]
 graphics:?:G
-type:prayer book
+type:totem
 properties:40:30:800
 alloc:50:20 to 100
 combat:0:1d1:0:0:0
@@ -3906,7 +3906,7 @@ flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
 name:473:[Ethereal Openings]
 graphics:?:g
-type:prayer book
+type:totem
 properties:40:30:10000
 alloc:15:40 to 100
 combat:0:1d1:0:0:0
@@ -3914,7 +3914,7 @@ flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
 name:474:[Godly Insights]
 graphics:?:g
-type:prayer book
+type:totem
 properties:50:30:20000
 alloc:15:50 to 100
 combat:0:1d1:0:0:0
@@ -3922,7 +3922,7 @@ flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
 name:475:[Purifications and Healing]
 graphics:?:g
-type:prayer book
+type:totem
 properties:60:30:30000
 alloc:15:60 to 100
 combat:0:1d1:0:0:0
@@ -3930,7 +3930,7 @@ flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
 name:476:[Holy Infusions]
 graphics:?:g
-type:prayer book
+type:totem
 properties:70:30:50000
 alloc:15:70 to 100
 combat:0:1d1:0:0:0
@@ -3938,7 +3938,7 @@ flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
 name:477:[Wrath of God]
 graphics:?:g
-type:prayer book
+type:totem
 properties:80:30:90000
 alloc:10:90 to 100
 combat:0:1d1:0:0:0

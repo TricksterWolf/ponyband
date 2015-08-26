@@ -148,7 +148,7 @@ name:magic book:Magic Book~
 graphics:light red
 flags:HATES_FIRE | EASY_KNOW
 
-name:prayer book:Prayer Book~
+name:totem:Totem~
 graphics:light green
 flags:HATES_FIRE | EASY_KNOW
 

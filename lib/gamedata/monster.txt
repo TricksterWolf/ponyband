@@ -611,7 +611,7 @@ flags:OPEN_DOOR
 flags:FORCE_SLEEP
 spell-freq:12
 spells:CAUSE_1 | HEAL | SCARE
-drop:prayer book:[Beginners Handbook]:5:1:1
+drop:totem:[Beginners Handbook]:5:1:1
 friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
@@ -975,7 +975,7 @@ flags:DROP_40
 spell-freq:5
 spells:CAUSE_1 | CONF | HEAL | MISSILE
 drop:magic book:[Magic for Beginners]:5:1:1
-drop:prayer book:[Beginners Handbook]:5:1:1
+drop:totem:[Beginners Handbook]:5:1:1
 friends-base:30:1d2:kobold
 friends-base:70:1d2:kobold
 desc:It is a kobold dressed in skins and gesturing wildly.
@@ -1023,7 +1023,7 @@ flags:OPEN_DOOR
 flags:FORCE_SLEEP
 spell-freq:9
 spells:CAUSE_1 | SCARE
-drop:prayer book:[Beginners Handbook]:3:1:1
+drop:totem:[Beginners Handbook]:3:1:1
 friends-base:20:1d3:person
 friends-base:40:1d3:person
 friends-base:80:1d3:person
@@ -1736,7 +1736,7 @@ flags:DROP_60
 flags:HURT_LIGHT
 flags:FORCE_SLEEP
 drop:magic book:[Conjurings and Tricks]:5:1:1
-drop:prayer book:[Words of Wisdom]:5:1:1
+drop:totem:[Words of Wisdom]:5:1:1
 spell-freq:8
 spells:BLINK | CAUSE_1 | MISSILE
 desc:An orc dressed in skins who gestures wildly.
@@ -2268,8 +2268,8 @@ flags:FORCE_SLEEP
 spell-freq:3
 spells:CAUSE_2 | HEAL | SCARE
 spells:S_MONSTER
-drop:prayer book:[Beginners Handbook]:8:1:1
-drop:prayer book:[Words of Wisdom]:8:1:1
+drop:totem:[Beginners Handbook]:8:1:1
+drop:totem:[Words of Wisdom]:8:1:1
 friends:50:1d2:Brigand
 friends:50:1d2:Illusionist
 friends:50:1d2:Easterling warrior
@@ -2289,8 +2289,8 @@ flags:HURT_LIGHT
 flags:FORCE_SLEEP
 spell-freq:5
 spells:BLIND | CAUSE_2 | CONF | DARKNESS | HEAL
-drop:prayer book:[Beginners Handbook]:8:1:1
-drop:prayer book:[Beginners Handbook]:8:1:1
+drop:totem:[Beginners Handbook]:8:1:1
+drop:totem:[Beginners Handbook]:8:1:1
 desc:A dark elven figure, dressed all in black, chanting curses and waiting to
 desc: deliver your soul to hell.
 
@@ -2498,8 +2498,8 @@ spell-freq:3
 spells:BLIND | BLINK | HASTE | HOLD | SLOW
 spells:BO_ELEC | BO_FIRE
 spells:S_ANIMAL
-drop:prayer book:[Beginners Handbook]:8:1:1
-drop:prayer book:[Words of Wisdom]:8:1:1
+drop:totem:[Beginners Handbook]:8:1:1
+drop:totem:[Words of Wisdom]:8:1:1
 desc:A priest devoted to Nature.
 
 name:178:Black orc
@@ -3499,8 +3499,8 @@ flags:DROP_1
 flags:OPEN_DOOR | TAKE_ITEM
 spell-freq:4
 spells:BLIND | CAUSE_2 | HEAL | SCARE | SLOW
-drop:prayer book:[Words of Wisdom]:5:1:1
-drop:prayer book:[Chants and Blessings]:5:1:1
+drop:totem:[Words of Wisdom]:5:1:1
+drop:totem:[Chants and Blessings]:5:1:1
 friends:50:1d1:Easterling champion
 friends:50:1d1:Master rogue
 friends:50:1d2:Illusionist
@@ -4020,8 +4020,8 @@ flags:FORCE_SLEEP
 spell-freq:6
 spells:CONF | DARKNESS | HEAL
 spells:S_ANIMAL | S_MONSTER | S_SPIDER
-drop:prayer book:[Words of Wisdom]:8:1:1
-drop:prayer book:[Chants and Blessings]:8:1:1
+drop:totem:[Words of Wisdom]:8:1:1
+drop:totem:[Chants and Blessings]:8:1:1
 desc:A powerful dark elf, with mighty nature-controlling enchantments.
 
 name:278:Stone troll
@@ -4103,8 +4103,8 @@ flags:HURT_LIGHT | NO_CONF | NO_SLEEP
 flags:FORCE_SLEEP
 spell-freq:5
 spells:BLINK | CAUSE_1 | DARKNESS | MISSILE | SCARE
-drop:prayer book:[Beginners Handbook]:5:1:1
-drop:prayer book:[Words of Wisdom]:5:1:1
+drop:totem:[Beginners Handbook]:5:1:1
+drop:totem:[Words of Wisdom]:5:1:1
 desc:A troll who is so bright he knows how to read.
 
 name:283:Giant grey ant
@@ -4435,8 +4435,8 @@ spell-freq:5
 spells:CAUSE_2 | HOLD | SCARE | TPORT | TRAPS
 spells:BO_FIRE
 spells:S_MONSTER
-drop:prayer book:[Words of Wisdom]:5:1:1
-drop:prayer book:[Chants and Blessings]:5:1:1
+drop:totem:[Words of Wisdom]:5:1:1
+drop:totem:[Chants and Blessings]:5:1:1
 desc:It is an ogre wrapped in furs and covered in grotesque body paints.
 
 name:554:Shimmering mold
@@ -4484,8 +4484,8 @@ flags:NO_CONF | NO_SLEEP | IM_POIS
 flags:FORCE_SLEEP
 spell-freq:4
 spells:BLIND | DARKNESS | HEAL | MIND_BLAST
-drop:prayer book:[Chants and Blessings]:8:1:1
-drop:prayer book:[Exorcism and Dispelling]:5:1:1
+drop:totem:[Chants and Blessings]:8:1:1
+drop:totem:[Exorcism and Dispelling]:5:1:1
 desc:A wraithly snake-like form with the torso of a beautiful woman, it is the
 desc: most powerful of its kind.
 
@@ -4520,8 +4520,8 @@ flags:OPEN_DOOR
 flags:FORCE_SLEEP
 spell-freq:8
 spells:BLIND | CAUSE_3 | DARKNESS | SCARE
-drop:prayer book:[Words of Wisdom]:8:1:1
-drop:prayer book:[Chants and Blessings]:8:1:1
+drop:totem:[Words of Wisdom]:8:1:1
+drop:totem:[Chants and Blessings]:8:1:1
 friends:50:1d1:Master rogue
 friends:50:1d1:Ranger
 friends:50:1d1:Paladin
@@ -5201,8 +5201,8 @@ flags:FORCE_SLEEP
 spell-freq:6
 spells:HEAL
 spells:S_ANIMAL | S_SPIDER
-drop:prayer book:[Chants and Blessings]:10:1:1
-drop:prayer book:[Exorcism and Dispelling]:5:1:1
+drop:totem:[Chants and Blessings]:10:1:1
+drop:totem:[Exorcism and Dispelling]:5:1:1
 friends-base:50:2d4:spider
 desc:An adept at unarmed combat, the mystic strikes with stunning power.  He can
 desc: summon help from nature and is able to focus his power to ease any pain.
@@ -6073,8 +6073,8 @@ spells:BLIND | CAUSE_3 | HASTE | HOLD | SCARE | TELE_TO
 spells:TPORT
 spells:BO_NETH
 spells:S_UNDEAD
-drop:prayer book:[Chants and Blessings]:8:1:1
-drop:prayer book:[Exorcism and Dispelling]:8:1:1
+drop:totem:[Chants and Blessings]:8:1:1
+drop:totem:[Exorcism and Dispelling]:8:1:1
 friends-base:80:1d3:skeleton
 desc:A gaunt figure, clothed in black robes.
 
@@ -6434,8 +6434,8 @@ spell-freq:5
 spells:BLIND | CAUSE_3 | SCARE
 spells:BO_NETH
 spells:S_MONSTERS
-drop:prayer book:[Chants and Blessings]:8:1:1
-drop:prayer book:[Exorcism and Dispelling]:8:1:1
+drop:totem:[Chants and Blessings]:8:1:1
+drop:totem:[Exorcism and Dispelling]:8:1:1
 friends:50:1d1:Imp
 desc:It is a humanoid figure dressed in armour of an ancient form.  From beneath
 desc: its helmet, eyes glow a baleful red and seem to pierce you like lances of
@@ -6994,8 +6994,8 @@ flags:FORCE_SLEEP
 spell-freq:2
 spells:BLIND | CAUSE_3 | CAUSE_4 | HEAL | HOLD
 spells:S_MONSTER | S_UNDEAD
-drop:prayer book:[Chants and Blessings]:5:1:1
-drop:prayer book:[Exorcism and Dispelling]:10:1:1
+drop:totem:[Chants and Blessings]:5:1:1
+drop:totem:[Exorcism and Dispelling]:10:1:1
 friends:30:1d1:Master thief
 friends:30:1d1:Ranger chieftain
 friends:30:1d1:Sorcerer
@@ -7414,8 +7414,8 @@ flags:OPEN_DOOR | TAKE_ITEM
 flags:NO_FEAR | NO_CONF | NO_SLEEP
 spell-freq:4
 spells:BLIND | CAUSE_3 | CAUSE_4 | HASTE | HEAL | SCARE
-drop:prayer book:[Chants and Blessings]:10:1:1
-drop:prayer book:[Exorcism and Dispelling]:10:1:1
+drop:totem:[Chants and Blessings]:10:1:1
+drop:totem:[Exorcism and Dispelling]:10:1:1
 friends:30:1d1:Master thief
 friends:30:1d1:Ranger chieftain
 friends:30:1d1:Patriarch
@@ -7952,8 +7952,8 @@ flags:FORCE_SLEEP
 spell-freq:3
 spells:HEAL
 spells:S_ANIMAL
-drop:prayer book:[Chants and Blessings]:8:1:1
-drop:prayer book:[Exorcism and Dispelling]:8:1:1
+drop:totem:[Chants and Blessings]:8:1:1
+drop:totem:[Exorcism and Dispelling]:8:1:1
 friends:50:2d4:spider
 desc:A lord of all that is natural, skilled in the mystic ways.  He is a master
 desc: of martial arts and is at one with nature, able to summon help from the
@@ -8372,8 +8372,8 @@ flags:FORCE_SLEEP
 spell-freq:3
 spells:HEAL | MIND_BLAST
 spells:S_ANIMAL | S_HOUND | S_SPIDER
-drop:prayer book:[Chants and Blessings]:5:1:1
-drop:prayer book:[Exorcism and Dispelling]:15:1:1
+drop:totem:[Chants and Blessings]:5:1:1
+drop:totem:[Exorcism and Dispelling]:15:1:1
 friends:80:3d5:spider
 desc:He is one of the few true masters of the art, being extremely skillful in
 desc: all forms of unarmed combat and controlling the world's natural creatures

@@ -427,7 +427,7 @@ static struct object_kind *choose_item(int a_idx)
 		   tval == TV_STAFF || tval == TV_WAND || tval == TV_ROD ||
 		   tval == TV_SCROLL || tval == TV_POTION || tval == TV_FLASK ||
 		   tval == TV_FOOD || tval == TV_MUSHROOM || tval == TV_MAGIC_BOOK ||
-		   tval == TV_PRAYER_BOOK || tval == TV_GOLD || tval == TV_LIGHT ||
+		   tval == TV_TOTEM_BOOK || tval == TV_GOLD || tval == TV_LIGHT ||
 		   tval == TV_AMULET || tval == TV_RING || tval == TV_CHEST ||
 		   (tval == TV_HAFTED && sval == lookup_sval(tval, "Mighty Hammer")) ||
 		   (tval == TV_CROWN && sval == lookup_sval(tval, "Massive Iron Crown"))) {

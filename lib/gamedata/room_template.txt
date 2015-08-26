@@ -5284,7 +5284,7 @@ rating:1
 rows:7
 columns:12
 doors:1
-tval:prayer book
+tval:totem
 D:############
 D:#.#.#.#....#
 D:%.#.#.#..#[#

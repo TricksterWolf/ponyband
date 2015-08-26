@@ -577,14 +577,8 @@ int price_item(struct store *store, const struct object *obj,
 	/* Worthless items */
 	if (price <= 0) return (0L);
 
-	/* The black market is always a worse deal */
-//	if (store->sidx == STORE_B_MARKET)
-//		adjust += 150;
-
 	/* Shop is buying */
 	if (store_buying) {
-//		/* Set the factor */
-//		adjust = 100 - (100 + adjust);
 
 		/* Shops now pay 2/3 of true value */
 		price = price * 2 / 3;
@@ -597,6 +591,7 @@ int price_item(struct store *store, const struct object *obj,
 
 		/* Check for no_selling option */
 		if (OPT(birth_no_selling)) return (0L);
+                
 	} else {
 		/* Recalculate if the player doesn't know the flavour */
 		if (!obj->kind->aware) {
@@ -681,7 +676,7 @@ static void mass_produce(struct object *obj)
 		}
 
 		case TV_MAGIC_BOOK:
-		case TV_PRAYER_BOOK:
+		case TV_TOTEM_BOOK:
 		{
 			if (cost <= 50L) size += mass_roll(2, 3);
 			if (cost <= 500L) size += mass_roll(1, 3);

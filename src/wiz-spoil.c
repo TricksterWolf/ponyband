@@ -121,7 +121,7 @@ static const grouper group_item[] =
 	{ TV_STAFF,		"Staffs" },
 
 	{ TV_MAGIC_BOOK,	"Books (Mage)" },
-	{ TV_PRAYER_BOOK,	"Books (Priest)" },
+	{ TV_TOTEM_BOOK,	"Totems" },
 
 	{ TV_CHEST,		"Chests" },
 
