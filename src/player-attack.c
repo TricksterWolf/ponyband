@@ -556,7 +556,7 @@ static void ranged_helper(struct object *obj, int dir, int range, int shots,
 
 			bool fear = FALSE;
 			const char *note_dies = monster_is_unusual(mon->race) ? 
-				" is destroyed." : " dies.";
+				" is destroyed." : " is defeated.";
 
 			struct attack_result result = attack(obj, y, x);
 			int dmg = result.dmg;

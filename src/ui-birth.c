@@ -150,10 +150,10 @@ static struct menu race_menu, class_menu, roller_menu;
 
 #define QUESTION_COL     2
 #define RACE_COL         2
-#define RACE_AUX_COL    22
-#define CLASS_COL       22
-#define CLASS_AUX_COL   36
-#define ROLLER_COL      36
+#define RACE_AUX_COL    20
+#define CLASS_COL       20
+#define CLASS_AUX_COL   38
+#define ROLLER_COL      38
 #define HIST_INSTRUCT_ROW 18
 
 #define MENU_ROWS TABLE_ROW + 14
@@ -162,7 +162,7 @@ static struct menu race_menu, class_menu, roller_menu;
  * upper left column and row, width, and lower column
  */
 static region race_region = {RACE_COL, TABLE_ROW, 17, MENU_ROWS};
-static region class_region = {CLASS_COL, TABLE_ROW, 14, MENU_ROWS};
+static region class_region = {CLASS_COL, TABLE_ROW, 18, MENU_ROWS};
 static region roller_region = {ROLLER_COL, TABLE_ROW, 34, MENU_ROWS};
 
 /**
@@ -509,7 +509,7 @@ static void setup_menus(void)
 
 	for (i = 0, c = classes; c; c = c->next, i++)
 		mdata->items[c->cidx] = c->name;
-	mdata->hint = "Class affects stats, skills, and other character traits.";
+	mdata->hint = "Cutie mark affects stats, skills, and other character traits.";
 		
 	/* Roller menu straightforward */
 	init_birth_menu(&roller_menu, MAX_BIRTH_ROLLERS, 0, &roller_region, FALSE,

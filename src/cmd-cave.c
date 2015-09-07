@@ -1459,8 +1459,8 @@ static const char *mon_feeling_text[] =
 	 * maintain symmetry with obj_feeling.
 	 */
 	"You are still uncertain about this place",
-	"Omens of death haunt this place",
-	"This place seems murderous",
+	"Omens of doom haunt this place",
+	"This place seems deadly",
 	"This place seems terribly dangerous",
 	"You feel anxious about this place",
 	"You feel nervous about this place",

@@ -8,7 +8,7 @@
 
 /* id					text */
 MON_MSG(NONE,				"[is|are] hurt.")
-MON_MSG(DIE,				"die[s].")
+MON_MSG(DIE,				"[is|are] defeated.")
 MON_MSG(DESTROYED,			"[is|are] destroyed.")
 MON_MSG(RESIST_A_LOT,		"resist[s] a lot.")
 MON_MSG(HIT_HARD,			"[is|are] hit hard.")

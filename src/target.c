@@ -105,7 +105,7 @@ void look_mon_desc(char *buf, size_t max, int m_idx)
 		else if (perc >= 10)
 			my_strcpy(buf, (living ? "badly wounded" : "badly damaged"), max);
 		else
-			my_strcpy(buf, (living ? "almost dead" : "almost destroyed"), max);
+			my_strcpy(buf, (living ? "almost defeated" : "almost destroyed"), max);
 	}
 
 	/* Effect status */

@@ -98,7 +98,7 @@ static void print_tomb(void)
 	put_str_centred(line++, 8, 8+31, "Level: %d", (int)player->lev);
 	put_str_centred(line++, 8, 8+31, "Exp: %d", (int)player->exp);
 	put_str_centred(line++, 8, 8+31, "AU: %d", (int)player->au);
-	put_str_centred(line++, 8, 8+31, "Killed on Level %d", player->depth);
+	put_str_centred(line++, 8, 8+31, "Defeated on Level %d", player->depth);
 	put_str_centred(line++, 8, 8+31, "by %s.", player->died_from);
 
 	line++;

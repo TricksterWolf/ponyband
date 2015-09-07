@@ -918,7 +918,7 @@ void lore_append_kills(textblock *tb, const struct monster_race *race,
 		/* We've been killed... */
 		if (lore->deaths) {
 			/* Killed ancestors */
-			textblock_append(tb, "%s has slain %d of your ancestors",
+			textblock_append(tb, "%s has defeated %d of your ancestors",
 							 lore_pronoun_nominative(msex, TRUE), lore->deaths);
 
 			/* But we've also killed it */
@@ -931,29 +931,29 @@ void lore_append_kills(textblock *tb, const struct monster_race *race,
 								 VERB_AGREEMENT(lore->deaths, "remains",
 												"remain"));
 		} else if (dead) { /* Dead unique who never hurt us */
-			textblock_append(tb, "You have slain this foe.  ");
+			textblock_append(tb, "You have defeated this foe.  ");
 		} else {
 			/* Alive and never killed us */
 			out = FALSE;
 		}
 	} else if (lore->deaths) { /* Not unique, but killed us */
 		/* Dead ancestors */
-		textblock_append(tb, "%d of your ancestors %s been killed by this creature, ", lore->deaths, VERB_AGREEMENT(lore->deaths, "has", "have"));
+		textblock_append(tb, "%d of your ancestors %s been defeated by this creature, ", lore->deaths, VERB_AGREEMENT(lore->deaths, "has", "have"));
 
 		if (lore->pkills) { /* Some kills this life */
-			textblock_append(tb, "and you have exterminated at least %d of the creatures.  ", lore->pkills);
+			textblock_append(tb, "and you have defeated at least %d of the creatures.  ", lore->pkills);
 		} else if (lore->tkills) { /* Some kills past lives */
-			textblock_append(tb, "and your ancestors have exterminated at least %d of the creatures.  ", lore->tkills);
+			textblock_append(tb, "and your ancestors have defeated at least %d of the creatures.  ", lore->tkills);
 		} else { /* No kills */
 			textblock_append_c(tb, COLOUR_RED, "and %s is not ever known to have been defeated.  ", lore_pronoun_nominative(msex, FALSE));
 		}
 	} else { /* Normal monsters */
 		if (lore->pkills) { /* Killed some this life */
-			textblock_append(tb, "You have killed at least %d of these creatures.  ", lore->pkills);
+			textblock_append(tb, "You have defeated at least %d of these creatures.  ", lore->pkills);
 		} else if (lore->tkills) { /* Killed some last life */
-			textblock_append(tb, "Your ancestors have killed at least %d of these creatures.  ", lore->tkills);
+			textblock_append(tb, "Your ancestors have defeated at least %d of these creatures.  ", lore->tkills);
 		} else { /* Killed none */
-			textblock_append(tb, "No battles to the death are recalled.  ");
+			textblock_append(tb, "No battles ending in defeat are recalled.  ");
 		}
 	}
 
@@ -1182,9 +1182,9 @@ void lore_append_exp(textblock *tb, const struct monster_race *race,
 
 	/* Introduction */
 	if (rf_has(known_flags, RF_UNIQUE))
-		textblock_append(tb, "Killing");
+		textblock_append(tb, "Defeating");
 	else
-		textblock_append(tb, "A kill of");
+		textblock_append(tb, "A defeat of");
 
 	textblock_append(tb, " this creature");
 

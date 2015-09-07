@@ -237,9 +237,9 @@ static const struct stat_data stat_message[] =
 	{ST_BAD_WEAPONS, " Bad         "},
 	{ST_AVERAGE_WEAPONS, " Average     "},
 	{ST_GOOD_WEAPONS, " Good        "},
-	{ST_SLAY_WEAPONS, " Weak Slay   "},
-	{ST_SLAYEVIL_WEAPONS, " Slay evil   "},
-	{ST_KILL_WEAPONS, " *Slay*      "},
+	{ST_SLAY_WEAPONS, " Weak Smash  "},
+	{ST_SLAYEVIL_WEAPONS, " Smash evil  "},
+	{ST_KILL_WEAPONS, " *Smash*     "},
 	{ST_BRAND_WEAPONS, " Brand       "},
 	{ST_WESTERNESSE_WEAPONS, " Westernesse "},
 	{ST_DEFENDER_WEAPONS, " Defender    "},
@@ -276,7 +276,7 @@ static const struct stat_data stat_message[] =
 	{ST_STAVES, "\n ***STAVES***    \n All:        "},
 	{ST_SPEED_STAVES, " Speed       "},
 	{ST_DESTRUCTION_STAVES, " Destruction "},
-	{ST_KILL_STAVES, " Kill        "},//dispel evil, power, holiness
+	{ST_KILL_STAVES, " Destroy     "},//dispel evil, power, holiness
 	{ST_ENDGAME_STAVES, " Endgame     "},//healing, magi, banishment
 	{ST_WANDS, "\n ***WANDS***     \n All:        "},
 	{ST_TELEPOTHER_WANDS, " Tele Other  "},
@@ -303,7 +303,7 @@ static const struct stat_data stat_message[] =
 	{ST_BAD_AMMO, " Brand       "},
 	{ST_VERYGOOD_AMMO, " Very Good   "},//seeker or mithril
 	{ST_AWESOME_AMMO, " Awesome     "},//seeker, mithril + brand
-	{ST_SLAYEVIL_AMMO, " Slay evil   "},
+	{ST_SLAYEVIL_AMMO, " Smash evil  "},
 	{ST_HOLY_AMMO, " Holy might  "},
 	{ST_BOOKS, "\n ***BOOKS***     \n All:        "},
 	{ST_1ST_BOOKS, " Book 1      "},
@@ -630,14 +630,14 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 			/* Egos by name - changes results a little */
 			if (obj->ego) {
 				/* slay evil */
-				if (strstr(obj->ego->name, "of Slay Evil"))
+				if (strstr(obj->ego->name, "of Smash Evil"))
 					add_stats(ST_SLAYEVIL_WEAPONS, vault, mon, number);
 
 				/* slay weapons */
-				else if (strstr(obj->ego->name, "of Slay"))
+				else if (strstr(obj->ego->name, "of Smash"))
 					add_stats(ST_SLAY_WEAPONS, vault, mon, number);
 				/* kill flag */
-				if (strstr(obj->ego->name, "of *Slay"))
+				if (strstr(obj->ego->name, "of *Smash"))
 					add_stats(ST_KILL_WEAPONS, vault, mon, number);
 
 				/* determine westernesse by flags */
@@ -929,7 +929,7 @@ static void get_obj_data(const struct object *obj, int y, int x, bool mon,
 				if (obj->ego) {
 					add_stats(ST_AWESOME_AMMO, vault, mon, number);
 
-					if (strstr(obj->ego->name, "of Slay Evil"))
+					if (strstr(obj->ego->name, "of Smash Evil"))
 						add_stats(ST_SLAYEVIL_AMMO, vault, mon, number);
 
 					if (strstr(obj->ego->name, "of Holy Might"))
@@ -1158,7 +1158,7 @@ static bool stats_monster(struct monster *mon, int i)
 		if (clearing) mon->race->max_num = 0;
 
 		/* debugging print that we killed it
-		   msg_format("Killed %s",race->name); */
+		   msg_format("Defeated %s",race->name); */
 	}
 
 	/* Is it mostly dangerous (10 levels ood or less?)*/
@@ -1206,7 +1206,7 @@ static void print_heading(void)
 	file_putf(stats_log," Artifacts: info on artifact location (vault, floor, etc) \n");
 	file_putf(stats_log,"		     do not include special artifacts, only weapons and armor \n");
 	file_putf(stats_log," Weapons  : Big dice weapons are either BoC, SoS, or Mod.  Uber \n");
-	file_putf(stats_log,"            weapons, are one of the above with xblows or slay evil\n");
+	file_putf(stats_log,"            weapons, are one of the above with xblows or smash evil\n");
 	file_putf(stats_log," Launchers: xtra shots and xtra might are only logged for x3 or\n");
 	file_putf(stats_log,"            better.  Very good has +to hit or + to dam > 15\n");
 	file_putf(stats_log," Amulets:   Endgame amulets are trickery, weaponmaster and magi\n");
@@ -1219,7 +1219,7 @@ static void print_heading(void)
 	file_putf(stats_log,"    		 *Acq* counts as two Acq scrolls");
 	file_putf(stats_log," Rods: 	 Utility rods: d-obj, d-stairs, d-traps, light, illum \n");
 	file_putf(stats_log,"    		 Endgame rods: Speed, Healing \n");
-	file_putf(stats_log," Staves: 	 Kill staves: dispel evil, power, holiness. \n");
+	file_putf(stats_log," Staves: 	 Destroy staves: dispel evil, power, holiness. \n");
 	file_putf(stats_log,"    		 Power staves: healing, magi, banishment \n");
 }
 

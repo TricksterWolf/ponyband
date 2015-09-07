@@ -45,7 +45,7 @@ void wr_description(void)
 	char buf[1024];
 
 	if (player->is_dead)
-		strnfmt(buf, sizeof buf, "%s, dead (%s)",
+		strnfmt(buf, sizeof buf, "%s, lost (%s)",
 				op_ptr->full_name,
 				player->died_from);
 	else

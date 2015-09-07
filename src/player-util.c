@@ -88,11 +88,11 @@ void take_hit(struct player *p, int dam, const char *kb_str)
 	/* Dead player */
 	if (p->chp < 0) {
 		/* Allow cheating */
-		if ((p->wizard || OPT(cheat_live)) && !get_check("Die? ")) {
+		if ((p->wizard || OPT(cheat_live)) && !get_check("Lose? ")) {
 			event_signal(EVENT_CHEAT_DEATH);
 		} else {
 			/* Hack -- Note death */
-			msgt(MSG_DEATH, "You die.");
+			msgt(MSG_DEATH, "You lose.");
 			event_signal(EVENT_MESSAGE_FLUSH);
 
 			/* Note cause of death */

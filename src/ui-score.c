@@ -100,10 +100,9 @@ static void display_scores_aux(const high_score scores[], int from, int to,
 
 			/* Dump some info */
 			strnfmt(out_val, sizeof(out_val),
-					"%3d.%9s  %s the %s %s, level %d",
-					place, score->pts, score->who,
-					r ? r->name : "<none>", c ? c->name : "<none>",
-					clev);
+                                        "%3d.%9s  %s, L%d %s with the %s cutie mark",
+					place, score->pts, score->who, clev,
+					r ? r->name : "<none>", c ? c->name : "<none>");
 
 			/* Append a "maximum level" */
 			if (mlev > clev)
@@ -115,11 +114,11 @@ static void display_scores_aux(const high_score scores[], int from, int to,
 
 			/* Died where? */
 			if (!cdun)
-				strnfmt(out_val, sizeof(out_val), "Killed by %s in the town",
+				strnfmt(out_val, sizeof(out_val), "Defeated by %s in the town",
 						score->how);
 			else
 				strnfmt(out_val, sizeof(out_val),
-						"Killed by %s on dungeon level %d", score->how, cdun);
+						"Defeated by %s on dungeon level %d", score->how, cdun);
 
 			/* Append a "maximum level" */
 			if (mdun > cdun)

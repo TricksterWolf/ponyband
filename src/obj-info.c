@@ -430,9 +430,9 @@ static bool describe_slays(textblock *tb, const struct object *obj)
 	if (!known_slays) return FALSE;
 
 	if (tval_is_weapon(obj) || tval_is_fuel(obj))
-		textblock_append(tb, "Slays ");
+		textblock_append(tb, "Smashes ");
 	else
-		textblock_append(tb, "It causes your melee attacks to slay ");
+		textblock_append(tb, "It causes your melee attacks to smash ");
 
 	s = known_slays;
 	while (s) {
@@ -959,7 +959,7 @@ static bool describe_damage(textblock *tb, const struct object *obj)
 
 	/* Mention slays and brands from other items */
 	if (nonweap_slay)
-		textblock_append(tb, "This weapon may benefit from one or more off-weapon brands or slays.\n");
+		textblock_append(tb, "This weapon may benefit from one or more off-weapon brands or smashes.\n");
 
 	textblock_append(tb, "Average damage/round: ");
 

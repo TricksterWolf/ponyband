@@ -96,7 +96,7 @@
 
 
 ############### WARRIOR ###############
-name:0:Athletics
+name:0:Warrior
 stats:3:-2:-2:2:2:-2
 skill-disarm:25:10
 skill-device:18:7
@@ -132,7 +132,7 @@ magic:0:0:0:0
 
 
 ############### MAGE ###############
-name:1:Celestial
+name:1:Mage
 stats:-3:3:0:0:-2:0
 skill-disarm:30:7
 skill-device:36:13
@@ -596,7 +596,7 @@ desc: damage to each monster in its area of effect.
 
 
 ############### PRIEST ###############
-name:2:Music/Games
+name:2:Priest
 stats:-1:-3:3:-1:1:1
 skill-disarm:25:7
 skill-device:30:10
@@ -1066,7 +1066,7 @@ desc: undead, a demon, an elemental, a golem, or a vortex.
 
 
 ############### ROGUE ###############
-name:3:Art/Wealth
+name:3:Rogue
 stats:0:1:-3:3:-1:-1
 skill-disarm:45:15
 skill-device:32:10
@@ -1394,7 +1394,7 @@ desc:  Uniques or monsters that resist confusion are not affected.
 
 
 ############### RANGER ###############
-name:4:Projectiles
+name:4:Ranger
 stats:0:2:-2:1:-1:1
 skill-disarm:30:8
 skill-device:32:10
@@ -1841,7 +1841,7 @@ desc:  This spell has no effect when used in the town.
 
 
 ############### PALADIN ###############
-name:5:Love/Health
+name:5:Paladin
 stats:1:-3:1:-1:2:2
 skill-disarm:20:7
 skill-device:24:10

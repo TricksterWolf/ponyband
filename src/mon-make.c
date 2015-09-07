@@ -1438,13 +1438,13 @@ bool mon_take_hit(struct monster *mon, int dam, bool *fear, const char *note)
 			}
 		} else if (!mflag_has(mon->mflag, MFLAG_VISIBLE))
 			/* Death by physical attack -- invisible monster */
-			msgt(soundfx, "You have killed %s.", m_name);
+			msgt(soundfx, "You have defeated %s.", m_name);
 		else if (monster_is_unusual(mon->race))
 			/* Death by Physical attack -- non-living monster */
 			msgt(soundfx, "You have destroyed %s.", m_name);
 		else
 			/* Death by Physical attack -- living monster */
-			msgt(soundfx, "You have slain %s.", m_name);
+			msgt(soundfx, "You have defeated %s.", m_name);
 
 		/* Player level */
 		div = player->lev;
@@ -1476,7 +1476,7 @@ bool mon_take_hit(struct monster *mon, int dam, bool *fear, const char *note)
 						 MDESC_DIED_FROM);
 
 			/* Log the slaying of a unique */
-			strnfmt(buf, sizeof(buf), "Killed %s", unique_name);
+			strnfmt(buf, sizeof(buf), "Defeated %s", unique_name);
 			history_add(buf, HIST_SLAY_UNIQUE, 0);
 		}
 

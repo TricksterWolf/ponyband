@@ -354,7 +354,7 @@ static s32b slay_power(const struct object *obj, int p, int verbose,
 
 	/* If it's cached (or there are no slays), return the value */
 	if (sv)	{
-		log_obj("Slay cache hit\n");
+		log_obj("Smash cache hit\n");
 	} else {
 
 		/*
@@ -395,7 +395,7 @@ static s32b slay_power(const struct object *obj, int p, int verbose,
 			struct slay *s, *slays = NULL;
 
 			/* Write info about the slay combination and multiplier */
-			log_obj("Slay multiplier for: ");
+			log_obj("Smash multiplier for: ");
 
 			brands = brand_collect(obj->brands, NULL, !known);
 			slays = slay_collect(obj->slays, NULL, !known);
@@ -415,18 +415,18 @@ static s32b slay_power(const struct object *obj, int p, int verbose,
 
 		/* Add to the cache */
 		if (fill_slay_cache(obj, sv))
-			log_obj("Added to slay cache\n");
+			log_obj("Added to smash cache\n");
 	}
 
 	q = (dice_pwr * (sv / 100)) / (tot_mon_power / 100);
 	p += q;
-	log_obj(format("Add %d for slay power, total is %d\n", q, p));
+	log_obj(format("Add %d for smash power, total is %d\n", q, p));
 
 	/* Bonuses for multiple brands and slays */
 	if (num_slays > 1) {
 		q = (num_slays * num_slays * dice_pwr) / (DAMAGE_POWER * 5);
 		p += q;
-		log_obj(format("Add %d power for multiple slays, total is %d\n", q, p));
+		log_obj(format("Add %d power for multiple smashes, total is %d\n", q, p));
 	}
 	if (num_brands > 1) {
 		q = (2 * num_brands * num_brands * dice_pwr) / (DAMAGE_POWER * 5);
@@ -436,11 +436,11 @@ static s32b slay_power(const struct object *obj, int p, int verbose,
 	if (num_kills > 1) {
 		q = (3 * num_kills * num_kills * dice_pwr) / (DAMAGE_POWER * 5);
 		p += q;
-		log_obj(format("Add %d power for multiple kills, total is %d\n", q, p));
+		log_obj(format("Add %d power for multiple defeats, total is %d\n", q, p));
 	}
 	if (num_slays == 8) {
 		p += 10;
-		log_obj(format("Add 10 power for full set of slays, total is %d\n", p));
+		log_obj(format("Add 10 power for full set of smashes, total is %d\n", p));
 	}
 	if (num_brands == 5) {
 		p += 20;
@@ -448,7 +448,7 @@ static s32b slay_power(const struct object *obj, int p, int verbose,
 	}
 	if (num_kills == 3) {
 		p += 20;
-		log_obj(format("Add 20 power for full set of kills, total is %d\n", p));
+		log_obj(format("Add 20 power for full set of defeats, total is %d\n", p));
 	}
 
 	return p;

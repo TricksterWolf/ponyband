@@ -1001,6 +1001,7 @@ const int adj_cha_empathy[STAT_RANGE] =
  * blows/round for powerful warriors.
  *
  * Note that certain artifacts and ego-items give "bonus" blows/round.
+ * 
  *
  * First, from the player class, we extract some values:
  *
@@ -1025,7 +1026,7 @@ const byte blows_table[12][12] =
 {
 	/* P */
    /* D:   0,   1,   2,   3,   4,   5,   6,   7,   8,   9,   10,  11+ */
-   /* DEX: 3,   10,  17,  /20, /40, /60, /80, /100,/120,/150,/180,/200 */
+   /* DEX: 3,   10,  17,  20,  22,  24,  26,  28,  30,  33,  36,  38 */
 
 	/* 0  */
 	{  100, 100, 95,  85,  75,  60,  50,  42,  35,  30,  25,  23 },
@@ -1062,7 +1063,7 @@ const byte blows_table[12][12] =
 
 	/* 11+ */
 	{  33,  29,  26,  24,  22,  21,  20,  19,  18,  17,  16,  15 },
-   /* DEX: 3,   10,  17,  /20, /40, /60, /80, /100,/120,/150,/180,/200 */
+   /* DEX: 3,   10,  17,  20,  22,  24,  26,  28,  30,  33,  36,  38 */
 };
 
 /**

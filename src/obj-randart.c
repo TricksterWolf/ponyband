@@ -712,7 +712,7 @@ static void parse_frequencies(void)
 			if (art->slays) {
 				temp = slay_count(art->slays);
 				artprobs[ART_IDX_MELEE_SLAY] += temp;
-				file_putf(log_file, "Adding %d for slays\n", temp);
+				file_putf(log_file, "Adding %d for smashes\n", temp);
 			}
 			if (art->brands) {
 				temp = brand_count(art->brands);
@@ -792,7 +792,7 @@ static void parse_frequencies(void)
 			if (art->slays) {
 				temp = slay_count(art->slays);
 				artprobs[ART_IDX_MELEE_SLAY] += temp;
-				file_putf(log_file, "Adding %d for slays\n", temp);
+				file_putf(log_file, "Adding %d for smashes\n", temp);
 			}
 			if (art->brands) {
 				temp = brand_count(art->brands);
@@ -874,7 +874,7 @@ static void parse_frequencies(void)
 			if (art->slays) {
 				temp = slay_count(art->slays);
 				artprobs[ART_IDX_MELEE_SLAY] += temp;
-				file_putf(log_file, "Adding %d for slays\n", temp);
+				file_putf(log_file, "Adding %d for smashes\n", temp);
 			}
 			if (art->brands) {
 				temp = brand_count(art->brands);
@@ -1720,7 +1720,7 @@ static void add_slay(struct artifact *art)
 
 	for (count = 0; count < MAX_TRIES; count++) {
 		if (!append_random_slay(&art->slays, &name)) continue;
-		file_putf(log_file, "Adding slay: %s\n", name);
+		file_putf(log_file, "Adding smash: %s\n", name);
 		return;
 	}
 }

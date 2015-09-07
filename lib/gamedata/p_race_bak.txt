@@ -11,6 +11,7 @@
 # Format:
 # name:race number:race name        min         avg         max
 # stats:str:int:wis:dex:con:cha     -4          0           4
+#       hon:mag:laf:loy:gen:kin
 # skill-disarm:base                 -5          0           15
 # skill-device:base                 -8          0           22
 # skill-save:base                   -8          0           20

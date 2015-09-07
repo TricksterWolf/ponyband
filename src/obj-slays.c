@@ -837,7 +837,7 @@ errr create_slay_cache(struct ego_item *items)
 		/* If we left early, we found a match */
 		if (j != i) continue;
 
-		/* msg("Found a new slay combo on an ego item"); */
+		/* msg("Found a new smash combo on an ego item"); */
 		count++;
 		copy_brand(&dupcheck[i].brands, ego->brands);
 		copy_slay(&dupcheck[i].slays, ego->slays);
@@ -857,7 +857,7 @@ errr create_slay_cache(struct ego_item *items)
 		free_slay(dupcheck[i].slays);
 		slay_cache[count].value = 0;
 		count++;
-		/*msg("Cached a slay combination");*/
+		/*msg("Cached a smash combination");*/
 	}
 
     mem_free(dupcheck);

@@ -1142,7 +1142,7 @@ static void display_monster(int col, int row, bool cursor, int oid)
 
 	/* Display kills */
 	if (rf_has(race->flags, RF_UNIQUE))
-		put_str(format("%s", (race->max_num == 0)?  " dead" : "alive"),
+		put_str(format("%s", (race->max_num == 0)?  " gone" : "activ"),
 				row, 70);
 	else
 		put_str(format("%5d", lore->pkills), row, 70);
@@ -1230,7 +1230,7 @@ static void mon_summary(int gid, const int *item_list, int n, int top,
 	/* Different display for the first item if we've got uniques to show */
 	if (gid == 0 &&
 		rf_has((&r_info[default_join[item_list[0]].oid])->flags, RF_UNIQUE)) {
-		c_prt(COLOUR_L_BLUE, format("%d known uniques, %d slain.", n, kills),
+		c_prt(COLOUR_L_BLUE, format("%d known uniques, %d defeated.", n, kills),
 					row, col);
 	} else {
 		int tkills = 0;
@@ -1238,7 +1238,7 @@ static void mon_summary(int gid, const int *item_list, int n, int top,
 		for (i = 0; i < z_info->r_max; i++)
 			tkills += l_list[i].pkills;
 
-		c_prt(COLOUR_L_BLUE, format("Creatures slain: %d/%d (in group/in total)", kills, tkills), row, col);
+		c_prt(COLOUR_L_BLUE, format("Creatures defeated: %d/%d (in group/in total)", kills, tkills), row, col);
 	}
 }
 
@@ -1319,7 +1319,7 @@ static void do_cmd_knowledge_monsters(const char *name, int row)
 	}
 
 	display_knowledge("monsters", monsters, m_count, r_funcs, m_funcs,
-			"                   Sym  Kills");
+			"                   Sym  Beatn");
 	mem_free(default_join);
 	mem_free(monsters);
 }

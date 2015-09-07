@@ -93,7 +93,7 @@ static game_event_type statusline_events[] =
  */
 const char *stat_names[STAT_MAX] =
 {
-	"HON: ", "MAG: ", "LAU: ", "LOY: ", "GEN: ", "KIN: "
+	"HON: ", "MAG: ", "LAF: ", "LOY: ", "GEN: ", "KIN: "
 };
 
 /**
@@ -101,7 +101,7 @@ const char *stat_names[STAT_MAX] =
  */
 const char *stat_names_reduced[STAT_MAX] =
 {
-	"Hon: ", "Mag: ", "Lau: ", "Loy: ", "Gen: ", "Kin: "
+	"Hon: ", "Mag: ", "Laf: ", "Loy: ", "Gen: ", "Kin: "
 };
 
 /**
