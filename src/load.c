@@ -907,7 +907,7 @@ int rd_player_spells(void)
 	
 	/* Read the spell order */
 	for (i = 0, cnt = 0; i < tmp16u; i++, cnt++)
-		rd_byte(&player->spell_order[cnt]);
+		rd_u16b(&player->spell_order[cnt]);
 	
 	/* Success */
 	return (0);

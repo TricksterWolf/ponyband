@@ -394,7 +394,7 @@ bool player_can_cast(struct player *p, bool show_msg)
 	if (p->class->magic.spell_realm->index == REALM_NONE)
 	{
 		if (show_msg)
-			msg("You cannot pray or produce magics.");
+			msg("You cannot actively use magic.");
 
 		return FALSE;
 	}
@@ -433,8 +433,7 @@ bool player_can_study(struct player *p, bool show_msg)
 	if (!p->upkeep->new_spells)
 	{
 		if (show_msg) {
-			const char *name = p->class->magic.spell_realm->spell_noun;
-			msg("You cannot learn any new %ss!", name);
+			msg("You cannot learn anything new from the books or tools you have.");
 		}
 
 		return FALSE;
@@ -461,21 +460,21 @@ bool player_can_read(struct player *p, bool show_msg)
 
 	if (no_light()) {
 		if (show_msg)
-			msg("You have no light to read by.");
+			msg("You have no light to view by.");
 
 		return FALSE;
 	}
 
 	if (p->timed[TMD_CONFUSED]) {
 		if (show_msg)
-			msg("You are too confused to read!");
+			msg("You are too confused!");
 
 		return FALSE;
 	}
 
 	if (p->timed[TMD_AMNESIA]) {
 		if (show_msg)
-			msg("You can't remember how to read!");
+			msg("You can't remember how!");
 
 		return FALSE;
 	}

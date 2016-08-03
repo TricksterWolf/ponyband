@@ -323,8 +323,15 @@ bool tval_can_have_flavor_k(const struct object_kind *kind)
 bool tval_is_book_k(const struct object_kind *kind)
 {
 	switch (kind->tval) {
-		case TV_MAGIC_BOOK:
-		case TV_TOTEM_BOOK:
+		case TV_ARCANE_BOOK:
+		case TV_DARK_BOOK:
+                case TV_ALCHEMY_BOOK:
+                case TV_RANDOM_BOOK:
+                case TV_ANIMAL_BOOK:
+                case TV_EARTH_BOOK:
+                case TV_WEATHER_BOOK:
+                case TV_MUSIC_BOOK:
+                case TV_HEALING_BOOK:
 			return TRUE;
 		default:
 			return FALSE;

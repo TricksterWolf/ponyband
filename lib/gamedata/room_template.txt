@@ -5284,7 +5284,7 @@ rating:1
 rows:7
 columns:12
 doors:1
-tval:totem
+tval:prop
 D:############
 D:#.#.#.#....#
 D:%.#.#.#..#[#
@@ -5299,7 +5299,7 @@ rating:1
 rows:7
 columns:12
 doors:1
-tval:magic book
+tval:songbook
 D:#####%%#####
 D:#..........#
 D:%...####...%

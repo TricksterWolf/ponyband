@@ -88,14 +88,19 @@ enum
 
 
 #define PY_MAX_EXP		99999999L	/* Maximum exp */
-#define PY_MAX_LEVEL	50			/* Maximum level */
+#define PY_MAX_LEVEL		50		/* Maximum level */
 
 /**
  * Flags for player.spell_flags[]
  */
-#define PY_SPELL_LEARNED    0x01 	/* Spell has been learned */
-#define PY_SPELL_WORKED     0x02 	/* Spell has been successfully tried */
-#define PY_SPELL_FORGOTTEN  0x04 	/* Spell has been forgotten */
+#define PY_SPELL_LEARNED	0x01 	/* Spell has been learned */
+#define PY_SPELL_WORKED		0x02 	/* Spell has been successfully tried */
+#define PY_SPELL_FORGOTTEN	0x04 	/* Spell has been forgotten */
+
+/**
+ * Hard limit on number of spells!
+ */
+#define PY_SPELL_NEVER_LEARNED	65000   /* Hard max on spell count in game */
 
 #define BTH_PLUS_ADJ    	3 		/* Adjust BTH per plus-to-hit */
 
@@ -115,7 +120,7 @@ enum
  */
 #define NOSCORE_WIZARD		0x0002
 #define NOSCORE_DEBUG		0x0008
-#define NOSCORE_JUMPING     0x0010
+#define NOSCORE_JUMPING		0x0010
 
 /**
  * Skill indexes
@@ -190,43 +195,6 @@ struct player_body {
 extern struct player_body *bodies;
 
 /**
- * Player racial info
- */
-struct player_race {
-	struct player_race *next;
-	const char *name;
-	
-	unsigned int ridx;
-
-	int r_adj[STAT_MAX];	/* Racial stat bonuses */
-	
-	int r_skills[SKILL_MAX];	/* racial skills */
-	
-	int r_mhp;			/* Race hit-dice modifier */
-	int r_exp;			/* Race experience factor */
-	
-	int b_age;			/* base age */
-	int m_age;			/* mod age */
-	
-	int base_hgt;		/* base height */
-	int mod_hgt;		/* mod height */
-	int base_wgt;		/* base weight */
-	int mod_wgt;		/* mod weight */
-	
-	int infra;			/* Infra-vision	range */
-	
-	int body;			/* Race body */
-	struct history_chart *history;
-	
-	bitflag flags[OF_SIZE];   /* Racial (object) flags */
-	bitflag pflags[PF_SIZE];  /* Racial (player) flags */
-
-	struct element_info el_info[ELEM_MAX]; /* Racial resists */
-};
-
-extern struct player_race *races;
-
-/**
  * Items the player starts with.  Used in player_class and specified in
  * class.txt.
  */
@@ -267,12 +235,11 @@ struct class_spell {
 	int slevel;	/**< Required level (to learn) */
 	int smana;		/**< Required mana (to cast) */
 	int sfail;		/**< Base chance of failure */
-	int sexp;		/**< Encoded experience bonus */
 };
 
 
 /**
- * A structure to hold class-dependent information on spell books.
+ * A structure to hold class-dependent information on spells.
  */
 struct class_book {
 	int tval;			/**< Item type of the book */
@@ -295,6 +262,60 @@ struct class_magic {
 	int total_spells;		/**< Number of spells for this class */
 };
 
+/**
+ * Information about player magic knowledge (to replace class_magic)
+ */
+struct player_magic {
+    int spell_first;        /**< Level of first spell (over all domains) */
+    int spell_weight;       /**< Max armor weight w/o penatly, CLASS-based */
+    int mana_stat;          /**< Which stat determines mana, CLASS-based */
+    byte *spell_level;      /**< Min level for each spell; 0 = can't cast */
+    byte *spell_mana;       /**< Min mana for each spell; 0 is possible */
+    byte *spell_fail;       /**< Min base fail rate for each spell */
+    
+    // These have been moved from player. to player->magic.:
+    byte *spell_flags;      /**< Spell flags (learned, forgotten, etc.) */
+    u16b *spell_order;      /**< Order in which spells have been learned */
+};
+
+
+/**
+ * Player racial info
+ */
+struct player_race {
+	struct player_race *next;
+	const char *name;
+	
+	unsigned int ridx;
+
+	int r_adj[STAT_MAX];	/* Racial stat bonuses */
+	
+	int r_skills[SKILL_MAX];	/* racial skills */
+	
+	int r_mhp;			/* Race hit-dice modifier */
+	int r_exp;			/* Race experience factor */
+	
+	int b_age;			/* base age */
+	int m_age;			/* mod age */
+	
+	int base_hgt;		/* base height */
+	int mod_hgt;		/* mod height */
+	int base_wgt;		/* base weight */
+	int mod_wgt;		/* mod weight */
+	
+	int infra;			/* Infra-vision	range */
+	
+	int body;			/* Race body */
+	struct history_chart *history;
+	
+	bitflag flags[OF_SIZE];   /* Racial (object) flags */
+	bitflag pflags[PF_SIZE];  /* Racial (player) flags */
+
+	struct element_info el_info[ELEM_MAX]; /* Racial resists */
+        
+};
+
+extern struct player_race *races;
 
 /**
  * Player class info
@@ -544,7 +565,7 @@ struct player {
 	byte unignoring;	/* Unignoring */
 
 	byte *spell_flags; /* Spell flags */
-	byte *spell_order;	/* Spell order */
+	u16b *spell_order;	/* Spell order */
 
 	s16b player_hp[PY_MAX_LEVEL];	/* HP Array */
 
@@ -565,7 +586,7 @@ struct player {
 	s16b ht_birth;          /* Birth Height */
 	s16b wt_birth;          /* Birth Weight */
 
-	/* Variable and calculatable player state */
+	/* Variable and calculable player state */
 	struct player_state state;
 	struct player_state known_state;
 

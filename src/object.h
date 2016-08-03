@@ -147,6 +147,23 @@ struct activation {
 extern struct activation *activations;
 
 /**
+ * Player-and-book-independent information about a magic spell
+ */
+struct magic_spell {
+        char *name;
+        char *text;
+        struct effect *effect;
+        struct magic_spell *next;
+};
+
+extern struct magic_spell *m_info;
+
+/**
+ * Book data 
+ */
+
+
+/**
  * Information about object types, like rods, wands, etc.
  */
 struct object_base {
@@ -182,8 +199,11 @@ struct object_kind {
 	struct object_kind *next;
 	u32b kidx;
 
-	int tval;					/**< General object type (see TV_ macros) */
-	int sval;					/**< Object sub-type  */
+	int tval;				/**< General object type (see TV_ macros) */
+	int sval;				/**< Object sub-type  */
+        
+        int num_spells;                         /* Number of spells (below) */
+        struct magic_spell *spell;              /* Spells in this book/tool */
 
 	random_value pval;			/* Item extra-parameter */
 

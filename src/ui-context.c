@@ -272,7 +272,7 @@ int context_menu_player(int mx, int my)
 
 	/* if player can cast, add casting option */
 	if (player_can_cast(player, FALSE)) {
-		ADD_LABEL("Cast", CMD_CAST, MN_ROW_VALID);
+		ADD_LABEL("Magic", CMD_CAST, MN_ROW_VALID);
 	}
 
 	/* if player is on stairs add option to use them */
@@ -456,7 +456,7 @@ int context_menu_cave(struct chunk *c, int y, int x, int adjacent, int mx,
 	ADD_LABEL("Use Item On", CMD_USE, MN_ROW_VALID);
 
 	if (player_can_cast(player, FALSE))
-		ADD_LABEL("Cast On", CMD_CAST, MN_ROW_VALID);
+		ADD_LABEL("Perform On", CMD_CAST, MN_ROW_VALID);
 
 	if (adjacent) {
 		struct object *obj = chest_check(y, x, CHEST_ANY);
@@ -684,7 +684,7 @@ int context_menu_object(struct object *obj)
 
 	if (obj_can_browse(obj)) {
 		if (obj_can_cast_from(obj) && player_can_cast(player, FALSE))
-			ADD_LABEL("Cast", CMD_CAST, MN_ROW_VALID);
+			ADD_LABEL("Magic", CMD_CAST, MN_ROW_VALID);
 
 		if (obj_can_study(obj) && player_can_study(player, FALSE))
 			ADD_LABEL("Study", CMD_STUDY, MN_ROW_VALID);

@@ -43,14 +43,14 @@ include Makefile.inc
 MAINFILES="$(WINMAINFILES)"
 
 ifdef CONSOLE
-  CFLAGS = -DUSE_GCU -DWIN32_CONSOLE_MODE -I$(PDCURSES_INC)
+  CFLAGS = -DUSE_GCU -DWIN32_CONSOLE_MODE -I$(PDCURSES_INC) -g
   LIBS = -s $(PDCURSES_LIB)
   IOBJS = $(BASEOBJS) main-gcu.o main.o
 
   #PDCURSES_INC = ../../pdcurses/include
   #PDCURSES_LIB = ../../pdcurses/lib/pdcurses.a
 else
-  CFLAGS = -DWINDOWS -static
+  CFLAGS = -DWINDOWS -static -g
 
   CFLAGS += -Iwin/include -Lwin/lib
   LDFLAGS += -Lwin/lib

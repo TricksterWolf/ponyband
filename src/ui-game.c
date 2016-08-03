@@ -130,10 +130,10 @@ struct cmd_info cmd_item_manage[] =
  */
 struct cmd_info cmd_info[] =
 {
-	{ "Browse a book", { 'b', 'P' }, CMD_BROWSE_SPELL, textui_spell_browse },
-	{ "Gain new spells", { 'G' }, CMD_STUDY, NULL, player_can_study_prereq },
-	{ "Cast a spell", { 'm' }, CMD_CAST, NULL, player_can_cast_prereq },
-	{ "Cast a spell", { 'p' }, CMD_CAST, NULL, player_can_cast_prereq },
+	{ "Browse a book/tool", { 'b', 'P' }, CMD_BROWSE_SPELL, textui_spell_browse },
+	{ "Study new magic", { 'G' }, CMD_STUDY, NULL, player_can_study_prereq },
+	{ "Take a magical action", { 'm' }, CMD_CAST, NULL, player_can_cast_prereq },
+	{ "Take a magical action", { 'p' }, CMD_CAST, NULL, player_can_cast_prereq },
 	{ "Full dungeon map", { 'M' }, CMD_NULL, do_cmd_view_map },
 	{ "Toggle ignoring of items", { 'K', 'O' }, CMD_NULL, textui_cmd_toggle_ignore },
 	{ "Display visible item list", { ']' }, CMD_NULL, do_cmd_itemlist },

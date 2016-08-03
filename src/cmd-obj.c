@@ -970,20 +970,17 @@ void do_cmd_refill(struct command *cmd)
 void do_cmd_cast(struct command *cmd)
 {
 	int spell_index, dir;
-
-	const char *verb = player->class->magic.spell_realm->verb;
-	const char *noun = player->class->magic.spell_realm->spell_noun;
 	const struct class_spell *spell;
 
 	/* Check the player can cast spells at all */
 	if (!player_can_cast(player, TRUE))
 		return;
-
+        
 	/* Get arguments */
 	if (cmd_get_spell(cmd, "spell", &spell_index,
-			/* Verb */   "cast",
+                        /* Verb */   NULL,  // hack: force realm verb
 			/* Book */   obj_can_cast_from,
-			/* Error */  "There are no spells you can cast.",
+                        /* Error */  "There are no magical actions you can take.",
 			/* Filter */ spell_okay_to_cast) != CMD_OK)
 		return;
 
@@ -1002,11 +999,25 @@ void do_cmd_cast(struct command *cmd)
 		msg("You have nothing to identify.");
 		return;
 	}
+        
+        const char *verb;
+        const char *spell_noun;
+
+        verb = "complete";
+        spell_noun = "action";
+        
+        struct object *book;
+        if (cmd_get_arg_item(cmd, "book", &book) == CMD_OK) {
+            verb = realms[book->tval].verb;
+            spell_noun = realms[book->tval].spell_noun;
+        }
+ 
 
 	/* Verify "dangerous" spells */
 	if (spell->smana > player->csp) {
 		/* Warning */
-		msg("You do not have enough mana to %s this %s.", verb, noun);
+		msg("You do not have enough mana to %s this %s.", 
+                        verb, spell_noun);
 
 		/* Flush input */
 		event_signal(EVENT_INPUT_FLUSH);
@@ -1033,9 +1044,9 @@ void do_cmd_study_spell(struct command *cmd)
 		return;
 
 	if (cmd_get_spell(cmd, "spell", &spell_index,
-			/* Verb */   "study",
+                        /* Verb */   "study",
 			/* Book */   obj_can_study,
-			/* Error  */ "You cannot learn any new spells from the books you have.",
+			/* Error  */ "You cannot learn anything new from the books or tools you have.",
 			/* Filter */ spell_okay_to_study) != CMD_OK)
 		return;
 
@@ -1053,17 +1064,23 @@ void do_cmd_study_book(struct command *cmd)
 	int spell_index = -1;
 	struct class_spell *spell;
 	int i, k = 0;
+	const char *spell_noun;
+        const char *book_noun;
 
-	const char *p = player->class->magic.spell_realm->spell_noun;
 
 	if (cmd_get_item(cmd, "item", &book_obj,
-			/* Prompt */ "Study which book? ",
-			/* Error  */ "You cannot learn any new spells from the books you have.",
+			/* Prompt */ "Study which item? ",
+			/* Error  */ "You cannot learn anything new from the books or tools you have.",
 			/* Filter */ obj_can_study,
 			/* Choice */ USE_INVEN | USE_FLOOR) != CMD_OK)
 		return;
 
+        int realm;
+        realm = tval_idx_to_realm_idx(book_obj->tval);
+        spell_noun = realms[realm].spell_noun;
+        book_noun = realms[realm].book_noun;
 	book = object_to_book(book_obj);
+        
 	track_object(player->upkeep, book_obj);
 	handle_stuff(player);
 
@@ -1081,7 +1098,7 @@ void do_cmd_study_book(struct command *cmd)
 	}
 
 	if (spell_index < 0)
-		msg("You cannot learn any %ss in that book.", p);
+		msg("You cannot learn any %ss from that %s.", spell_noun, book_noun);
 	else {
 		spell_learn(spell_index);
 		player->upkeep->energy_use = z_info->move_energy;

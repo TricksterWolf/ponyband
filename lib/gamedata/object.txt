@@ -10,6 +10,7 @@
 # name: serial number : & object name~
 # graphics: symbol : color
 # type: tval 
+# spell: name
 # properties: depth : weight : cost
 # combat: base armor class : base damage : plus to-hit : plus to-dam :
 # plus to-armor class
@@ -59,6 +60,11 @@
 # Another color, "d", is used for "flavoured" items.
 
 # 'type' is for the base type of item, from object_base.txt.
+
+# 'spell' is the name of one spell from this item. This implies the item is a
+# book/tool, so 'type' must match the book/tool's book_noun type (it both
+# determines casting stat and whether or not the book/tool is usable by a
+# player). Spells are ordered in the book/tool as they appear here.
 
 # 'properties' is for level, weight and cost. Level defines how "advanced"
 # the object is, when determining how easy it is to use a wand, staff or rod;
@@ -3805,57 +3811,171 @@ time:100
 ##### Basic Books #####
 
 name:460:[Magic for Beginners]
-graphics:?:R
-type:magic book
+graphics:?:V
+type:spellbook
+spell:Magic Missile
+spell:Detect Monsters
+spell:Light Area
+spell:Find Traps, Doors, & Stairs
+spell:Stinking Cloud
 properties:1:30:25
 alloc:40:1 to 100
 combat:0:1d1:0:0:0
 
 name:461:[Conjurings and Tricks]
-graphics:?:R
-type:magic book
+graphics:?:V
+type:spellbook
+spell:Confuse Monster
+spell:Trap/Door Destruction
+spell:Sleep Monster
 properties:5:30:100
 alloc:40:5 to 100
 combat:0:1d1:0:0:0
 
 name:462:[Incantations and Illusions]
-graphics:?:R
-type:magic book
+graphics:?:V
+type:spellbook
+spell:Spear of Light
+spell:Frost Bolt
 properties:10:30:400
 alloc:40:10 to 100
 combat:0:1d1:0:0:0
 
 name:463:[Sorcery and Evocations]
-graphics:?:R
-type:magic book
+graphics:?:V
+type:spellbook
+spell:Fire Bolt
+spell:Polymorph Other
 properties:20:30:800
 alloc:40:20 to 100
 combat:0:1d1:0:0:0
 
-name:464:[Beginners Handbook]
+name:464:[Sombra's Visions]
+graphics:?:v
+type:dark tome
+spell:Detect Evil
+spell:Scare Monster
+spell:Rift
+spell:Rend Soul
+spell:Banishment
+spell:Mass Banishment
+spell:Chaos Strike
+spell:Turn Undead
+spell:Annihilation
+spell:Cloud Kill
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:465:[Super Naturals]
 graphics:?:G
-type:totem
+type:formulary
+spell:Clairvoyance
+spell:Restoration
+spell:Remembrance
+spell:Enchant Weapon
+spell:Enchant Armor
+spell:Elemental Brand
+spell:Elemental Ammo
+spell:Lesser Recharging
+spell:Recharging
+spell:Greater Recharging
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:466:[Beginners Handbook]
+graphics:?:M
+type:prop
+spell:Bless
+spell:Remove Fear
+spell:Wonder
+spell:Door Creation
 properties:1:30:25
 alloc:40:1 to 100
 combat:0:1d1:0:0:0
 
-name:465:[Words of Wisdom]
-graphics:?:G
-type:totem
+name:467:[Words of Wisdom]
+graphics:?:M
+type:prop
+spell:Chant
+spell:Stair Creation
+spell:Earthquake
 properties:5:30:100
 alloc:40:5 to 100
 combat:0:1d1:0:0:0
 
-name:466:[Chants and Blessings]
-graphics:?:G
-type:totem
+name:468:[Chants and Blessings]
+graphics:?:M
+type:prop
+spell:Bedlam
+spell:Portal
 properties:10:30:400
 alloc:40:10 to 100
 combat:0:1d1:0:0:0
 
-name:467:[Exorcism and Dispelling]
-graphics:?:G
-type:totem
+name:469:[Exorcism and Dispelling]
+graphics:?:M
+type:prop
+spell:Joy Explosion
+spell:Sense Invisible
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:470:[Animal Care and Feeding]
+graphics:?:Y
+type:bestiary
+spell:Dispel Evil
+spell:Banish Evil
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:471:[Fifty Shades of Hay]
+graphics:?:m
+type:almanac
+spell:Satisfy Hunger
+spell:Turn Stone to Mud
+spell:Probing
+spell:Identify
+spell:Glyph of Warding
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:472:[Wing Pony Badge]
+graphics:?:R
+type:swag item
+spell:Lightning Bolt
+spell:Haste Self
+spell:Thunderclap
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:473:[Octavia's Symphonies]
+graphics:?:Z
+type:songbook
+spell:Dispel Undead
+properties:40:30:800
+alloc:50:20 to 100
+combat:0:1d1:0:0:0
+
+name:474:[First Aid]
+graphics:?:I
+type:medkit
+spell:Mass Sleep
+spell:Cure Light Wounds
+spell:Slow Poison
+spell:Cure Serious Wounds
+spell:Sanctuary
+spell:Resist Heat and Cold
+spell:Neutralize Poison
+spell:Cure Critical Wounds
+spell:Cure Mortal Wounds
+spell:Heal
+spell:Healing
 properties:40:30:800
 alloc:50:20 to 100
 combat:0:1d1:0:0:0
@@ -3864,81 +3984,107 @@ combat:0:1d1:0:0:0
 
 ##### Special Books (note resistances) #####
 
-name:468:[Resistances of Scarabtarices]
-graphics:?:r
-type:magic book
+name:528:[Resistances of Scarabtarices]
+graphics:?:V
+type:spellbook
+spell:Reveal Monsters
+spell:Acid Bolt
+spell:Slow Monster
+spell:Frost Ball
 properties:40:30:10000
 alloc:15:40 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:469:[Raal's Tome of Destruction]
-graphics:?:r
-type:magic book
+name:529:[Raal's Tome of Destruction]
+graphics:?:V
+type:spellbook
+spell:Fire Ball
+spell:Treasure Detection
+spell:Resist Cold
+spell:Resist Fire
+spell:Resistance
 properties:50:30:20000
 alloc:15:50 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:470:[Mordenkainen's Escapes]
-graphics:?:r
-type:magic book
+name:530:[Mordenkainen's Escapes]
+graphics:?:V
+type:spellbook
+spell:Shield
+spell:Explosion
+spell:Acid Ball
+spell:Ice Storm
+spell:Mana Storm
 properties:60:30:30000
 alloc:15:60 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:471:[Tenser's Transformations]
-graphics:?:r
-type:magic book
+name:531:[Tenser's Transformations]
+graphics:?:V
+type:spellbook
+spell:Meteor Swarm
+spell:Word of Recall
 properties:70:30:50000
 alloc:15:70 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:472:[Kelek's Grimoire of Power]
-graphics:?:r
-type:magic book
+name:532:[Kelek's Grimoire of Power]
+graphics:?:V
+type:spellbook
+spell:Blink
+spell:Teleport Self
+spell:Teleport Other
 properties:80:30:90000
 alloc:10:90 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:473:[Ethereal Openings]
-graphics:?:g
-type:totem
+name:533:[Ethereal Openings]
+graphics:?:M
+type:prop
+spell:Protection from Evil
+spell:Sense Surroundings
 properties:40:30:10000
 alloc:15:40 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:474:[Godly Insights]
-graphics:?:g
-type:totem
+name:534:[Godly Insights]
+graphics:?:M
+type:prop
+spell:Holy Word
+spell:Teleport Level
 properties:50:30:20000
 alloc:15:50 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:475:[Purifications and Healing]
-graphics:?:g
-type:totem
+name:535:[Purifications and Healing]
+graphics:?:M
+type:prop
+spell:Alter Reality
 properties:60:30:30000
 alloc:15:60 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:476:[Holy Infusions]
-graphics:?:g
-type:totem
+name:536:[Holy Infusions]
+graphics:?:M
+type:prop
+spell:Detection
 properties:70:30:50000
 alloc:15:70 to 100
 combat:0:1d1:0:0:0
 flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
-name:477:[Wrath of God]
-graphics:?:g
-type:totem
+name:537:[Wrath of God]
+graphics:?:M
+type:prop
+spell:Word of Destruction
 properties:80:30:90000
 alloc:10:90 to 100
 combat:0:1d1:0:0:0
@@ -3948,49 +4094,49 @@ flags:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD | GOOD
 
 ##### Chests #####
 
-name:480:& Small wooden chest~
+name:580:& Small wooden chest~
 graphics:~:s
 type:chest
 properties:5:250:20
 alloc:30:5 to 100
 combat:0:2d3:0:0:0
 
-name:481:& Large wooden chest~
+name:581:& Large wooden chest~
 graphics:~:s
 type:chest
 properties:15:500:60
 alloc:30:15 to 100
 combat:0:2d5:0:0:0
 
-name:482:& Small iron chest~
+name:582:& Small iron chest~
 graphics:~:s
 type:chest
 properties:25:300:100
 alloc:30:25 to 100
 combat:0:2d4:0:0:0
 
-name:483:& Large iron chest~
+name:583:& Large iron chest~
 graphics:~:s
 type:chest
 properties:35:1000:150
 alloc:30:35 to 100
 combat:0:2d6:0:0:0
 
-name:484:& Small steel chest~
+name:584:& Small steel chest~
 graphics:~:s
 type:chest
 properties:45:500:200
 alloc:30:45 to 100
 combat:0:2d4:0:0:0
 
-name:485:& Large steel chest~
+name:585:& Large steel chest~
 graphics:~:s
 type:chest
 properties:55:1000:250
 alloc:30:55 to 100
 combat:0:2d6:0:0:0
 
-name:486:& Ruined chest~
+name:586:& Ruined chest~
 graphics:~:s
 type:chest
 properties:0:250:0
@@ -4000,7 +4146,7 @@ properties:0:250:0
 
 ##### Dragon Scale Mail #####
 
-name:500:Black Dragon Scale Mail~
+name:600:Black Dragon Scale Mail~
 graphics:[:s
 type:dragon armor
 properties:50:120:40000
@@ -4013,7 +4159,7 @@ effect:BREATH:ACID:2
 dice:120
 time:50
 
-name:501:Blue Dragon Scale Mail~
+name:601:Blue Dragon Scale Mail~
 graphics:[:b
 type:dragon armor
 properties:50:100:40000
@@ -4026,7 +4172,7 @@ effect:BREATH:ELEC:2
 dice:150
 time:50
 
-name:502:White Dragon Scale Mail~
+name:602:White Dragon Scale Mail~
 graphics:[:w
 type:dragon armor
 properties:50:110:40000
@@ -4039,7 +4185,7 @@ effect:BREATH:COLD:2
 dice:100
 time:50
 
-name:503:Red Dragon Scale Mail~
+name:603:Red Dragon Scale Mail~
 graphics:[:r
 type:dragon armor
 properties:50:160:40000
@@ -4052,7 +4198,7 @@ effect:BREATH:FIRE:2
 dice:200
 time:50
 
-name:504:Green Dragon Scale Mail~
+name:604:Green Dragon Scale Mail~
 graphics:[:g
 type:dragon armor
 properties:60:140:60000
@@ -4065,7 +4211,7 @@ effect:BREATH:POIS:2
 dice:150
 time:50
 
-name:505:Multi-Hued Dragon Scale Mail~
+name:605:Multi-Hued Dragon Scale Mail~
 graphics:[:v
 type:dragon armor
 properties:90:260:150000
@@ -4088,7 +4234,7 @@ effect:BREATH:POIS:2
 dice:250
 time:50
 
-name:506:Pseudo-Dragon Scale Mail~
+name:606:Pseudo-Dragon Scale Mail~
 graphics:[:o
 type:dragon armor
 properties:65:200:60000
@@ -4105,7 +4251,7 @@ effect:BREATH:DARK:2
 dice:200
 time:50
 
-name:507:Law Dragon Scale Mail~
+name:607:Law Dragon Scale Mail~
 graphics:[:B
 type:dragon armor
 properties:80:220:80000
@@ -4122,7 +4268,7 @@ effect:BREATH:SHARD:2
 dice:230
 time:50
 
-name:509:Gold Dragon Scale Mail~
+name:609:Gold Dragon Scale Mail~
 graphics:[:y
 type:dragon armor
 properties:50:180:40000
@@ -4135,7 +4281,7 @@ effect:BREATH:SOUND:2
 dice:150
 time:50
 
-name:510:Chaos Dragon Scale Mail~
+name:610:Chaos Dragon Scale Mail~
 graphics:[:v
 type:dragon armor
 properties:80:240:80000
@@ -4152,7 +4298,7 @@ effect:BREATH:DISEN:2
 dice:220
 time:50
 
-name:511:Balance Dragon Scale Mail~
+name:611:Balance Dragon Scale Mail~
 graphics:[:v
 type:dragon armor
 properties:95:280:100000
@@ -4173,7 +4319,7 @@ effect:BREATH:DISEN:2
 dice:250
 time:50
 
-name:512:Power Dragon Scale Mail~
+name:612:Power Dragon Scale Mail~
 graphics:[:v
 type:dragon armor
 properties:100:300:300000
@@ -4193,47 +4339,47 @@ time:50
 
 ##### Gold/gems #####
 
-name:520:copper
+name:620:copper
 graphics:$:u
 type:gold
 
-name:521:silver
+name:621:silver
 graphics:$:s
 type:gold
 
-name:522:garnets
+name:622:garnets
 graphics:$:r
 type:gold
 
-name:523:gold
+name:623:gold
 graphics:$:y
 type:gold
 
-name:524:opals
+name:624:opals
 graphics:$:W
 type:gold
 
-name:525:sapphires
+name:625:sapphires
 graphics:$:b
 type:gold
 
-name:526:rubies
+name:626:rubies
 graphics:$:r
 type:gold
 
-name:527:diamonds
+name:627:diamonds
 graphics:$:w
 type:gold
 
-name:528:emeralds
+name:628:emeralds
 graphics:$:g
 type:gold
 
-name:529:mithril
+name:629:mithril
 graphics:$:B
 type:gold
 
-name:530:adamantite
+name:630:adamantite
 graphics:$:G
 type:gold
 
@@ -4243,14 +4389,14 @@ type:gold
 # These objects are never created without being turned into artifacts.
 # This simplifies the code for "killing the winner monster".
 
-name:540:& Mighty Hammer~
+name:640:& Mighty Hammer~
 graphics:\:D
 type:hafted
 properties:15:200:1000
 combat:0:3d9:0:0:0
 flags:INSTA_ART | QUEST_ART
 
-name:542:& Massive Iron Crown~
+name:642:& Massive Iron Crown~
 graphics:]:D
 type:crown
 properties:44:20:1000

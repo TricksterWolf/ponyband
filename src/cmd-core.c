@@ -100,13 +100,13 @@ static const struct command_info game_cmds[] =
 	{ CMD_THROW, "throw", do_cmd_throw, FALSE, 0 },
 	{ CMD_INSCRIBE, "inscribe", do_cmd_inscribe, FALSE, 0 },
 	{ CMD_STUDY, "study", do_cmd_study, FALSE, 0 },
-	{ CMD_CAST, "cast", do_cmd_cast, FALSE, 0 },
+	{ CMD_CAST, "magic", do_cmd_cast, FALSE, 0 },
 	{ CMD_SELL, "sell", do_cmd_sell, FALSE, 0 },
 	{ CMD_STASH, "stash", do_cmd_stash, FALSE, 0 },
 	{ CMD_BUY, "buy", do_cmd_buy, FALSE, 0 },
 	{ CMD_RETRIEVE, "retrieve", do_cmd_retrieve, FALSE, 0 },
 	{ CMD_USE, "use", do_cmd_use, FALSE, 0 },
-	{ CMD_SUICIDE, "commit suicide", do_cmd_suicide, FALSE, 0 },
+	{ CMD_SUICIDE, "give up forever", do_cmd_suicide, FALSE, 0 },
 	{ CMD_HELP, "help", NULL, FALSE, 0 },
 	{ CMD_REPEAT, "repeat", NULL, FALSE, 0 },
 };
@@ -451,31 +451,41 @@ int cmd_get_arg_choice(struct command *cmd, const char *arg, int *choice)
 /**
  * Get a spell from the user, trying the command first but then prompting
  */
-int cmd_get_spell(struct command *cmd, const char *arg, int *spell,
-				  const char *verb, item_tester book_filter, const char *error,
+int cmd_get_spell(struct command *cmd, const char *arg, int *spell, const char *verb,
+				  item_tester book_filter, const char* error,
 				  bool (*spell_filter)(int spell))
 {
-	struct object *book;
+    struct object *book;
 
-	/* See if we've been provided with this one */
-	if (cmd_get_arg_choice(cmd, arg, spell) == CMD_OK) {
-		/* Ensure it passes the filter */
-		if (!spell_filter || spell_filter(*spell) == TRUE)
-			return CMD_OK;
-	}
+    /* See if we've been provided with this one */
+    if (cmd_get_arg_choice(cmd, arg, spell) == CMD_OK) {
 
-	/* See if we've been given a book to look at */
-	if (cmd_get_arg_item(cmd, "book", &book) == CMD_OK)
-		*spell = get_spell_from_book(verb, book, error, spell_filter);
-	else
-		*spell = get_spell(verb, book_filter, cmd->code, error, spell_filter);
+	/* Ensure it passes the filter */
+	if (!spell_filter || spell_filter(*spell) == TRUE) {
+            return CMD_OK;
+        }
+    }
+        
+    /* See if we've been given a book to look at */
+    if (cmd_get_arg_item(cmd, "book", &book) == CMD_OK) {
+        int realm = tval_idx_to_realm_idx(book->tval);
+        verb = realms[realm].verb;
+        const char *spell_noun = realms[realm].spell_noun;
+        const char *book_noun = realms[realm].book_noun;
+	*spell = get_spell_from_book(
+                verb,
+                book,
+                format("You cannot %s any %s from this %s.", verb, spell_noun, book_noun),
+                spell_filter);
+    } else {
+	*spell = get_spell(verb, book_filter, cmd->code, error, spell_filter);
+    }
+    if (*spell >= 0) {
+	cmd_set_arg_choice(cmd, arg, *spell);
+	return CMD_OK;
+    }
 
-	if (*spell >= 0) {
-		cmd_set_arg_choice(cmd, arg, *spell);
-		return CMD_OK;
-	}
-
-	return CMD_ARG_ABORTED;
+    return CMD_ARG_ABORTED;
 }
 
 /**

@@ -129,10 +129,10 @@ owner:25000:Delilah the Pure (Elf)
 owner:30000:Bosk the Wise (Dwarf)
 slots:6:14
 turnover:9
-always:totem:[Beginners Handbook]
-always:totem:[Words of Wisdom]
-always:totem:[Chants and Blessings]
-always:totem:[Exorcism and Dispelling]
+always:prop:[Beginners Handbook]
+always:prop:[Words of Wisdom]
+always:prop:[Chants and Blessings]
+always:prop:[Exorcism and Dispelling]
 always:potion:Cure Light Wounds
 normal:hafted:Whip
 normal:hafted:Quarterstaff
@@ -150,7 +150,7 @@ normal:potion:Heroism
 normal:potion:Neutralize Poison
 normal:potion:Cure Serious Wounds
 normal:potion:Cure Critical Wounds
-buy:totem
+buy:prop
 buy:scroll
 buy:potion
 buy:hafted
@@ -193,10 +193,10 @@ owner:25000:Inglorian the Mage (Human)
 owner:30000:Luthien Starshine (High-Elf)
 slots:4:14
 turnover:9
-always:magic book:[Magic for Beginners]
-always:magic book:[Conjurings and Tricks]
-always:magic book:[Incantations and Illusions]
-always:magic book:[Sorcery and Evocations]
+always:spellbook:[Magic for Beginners]
+always:spellbook:[Conjurings and Tricks]
+always:spellbook:[Incantations and Illusions]
+always:spellbook:[Sorcery and Evocations]
 normal:ring:Searching
 normal:ring:Feather Falling
 normal:ring:Protection
@@ -214,7 +214,7 @@ normal:staff:Light
 normal:staff:Mapping
 normal:staff:Detect Invisible
 normal:staff:Detect Evil
-buy:magic book
+buy:spellbook
 buy:amulet
 buy:ring
 buy:staff

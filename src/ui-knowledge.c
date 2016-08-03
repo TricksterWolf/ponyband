@@ -1142,7 +1142,7 @@ static void display_monster(int col, int row, bool cursor, int oid)
 
 	/* Display kills */
 	if (rf_has(race->flags, RF_UNIQUE))
-		put_str(format("%s", (race->max_num == 0)?  " gone" : "activ"),
+		put_str(format("%s", (race->max_num == 0)?  " gone" : "active"),
 				row, 70);
 	else
 		put_str(format("%5d", lore->pkills), row, 70);
@@ -1343,13 +1343,15 @@ static const grouper object_text_order[] =
 	{TV_ROD,			"Rod"			},
  	{TV_FOOD,			"Food"			},
  	{TV_MUSHROOM,		"Mushroom"		},
-	{TV_MAGIC_BOOK,		"Magic Book"	},
-	{TV_DARK_BOOK,		"Sorcery Tome"	},       
+	{TV_ARCANE_BOOK,		"Spellbook"	},
+	{TV_DARK_BOOK,		"Dark Tome"	},       
       	{TV_ALCHEMY_BOOK,	"Formulary"	},
-	{TV_TOTEM_BOOK,         "Totem"	},
-        {TV_ANIMAL_BOOK,        "Animal Guide"},
+	{TV_RANDOM_BOOK,        "Prop"	},
+        {TV_ANIMAL_BOOK,        "Bestiary"},
         {TV_EARTH_BOOK,         "Almanac"},
-        {TV_WEATHER_BOOK,       "Swag"},
+        {TV_WEATHER_BOOK,       "Swag Item"},
+        {TV_MUSIC_BOOK,         "Songbook"},
+        {TV_HEALING_BOOK,       "Medkit"},
 	{TV_LIGHT,			"Light"			},
 	{TV_FLASK,			"Flask"			},
 	{TV_SWORD,			"Sword"			},
@@ -1824,8 +1826,15 @@ static int o_cmp_tval(const void *a, const void *b)
 	switch (k_a->tval)
 	{
 		case TV_LIGHT:
-		case TV_MAGIC_BOOK:
-		case TV_TOTEM_BOOK:
+		case TV_ARCANE_BOOK:
+		case TV_DARK_BOOK:
+		case TV_ALCHEMY_BOOK:
+		case TV_RANDOM_BOOK:
+		case TV_ANIMAL_BOOK:
+		case TV_EARTH_BOOK:
+		case TV_WEATHER_BOOK:
+		case TV_MUSIC_BOOK:
+		case TV_HEALING_BOOK:
 		case TV_DRAG_ARMOR:
 			/* leave sorted by sval */
 			break;

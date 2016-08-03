@@ -12,6 +12,10 @@
 #ifndef INCLUDED_ANGBAND_H
 #define INCLUDED_ANGBAND_H
 
+
+#include "debug.h"
+
+
 /*
  * Include the low-level includes.
  */

@@ -151,17 +151,57 @@ static const char *obj_desc_get_basename(const struct object *obj, bool aware,
 		case TV_SCROLL:
 			return (show_flavor ? "& Scroll~ titled #" : "& Scroll~");
 
-		case TV_MAGIC_BOOK:
+		case TV_ARCANE_BOOK:
 			if (terse)
-				return "& Book~ #";
+				return "& Spellbook~ #";
 			else
-				return "& Book~ of Magic Spells #";
+				return "& Spellbook~ of Magic #";
 
-		case TV_TOTEM_BOOK:
+		case TV_DARK_BOOK:
 			if (terse)
-				return "& Book~ #";
+				return "& Dark Tome~ #";
 			else
-				return "& Holy Book~ of Prayers #";
+				return "& Dark Tome~ of Hexes #";
+		case TV_ALCHEMY_BOOK:
+			if (terse)
+				return "& Formular|y|ies| #";
+			else
+				return "& Formular|y|ies| of Recipes #";
+		case TV_RANDOM_BOOK:
+			if (terse)
+				return "& Prop~ #";
+			else
+				return "& Prop~ of Random Tricks #";
+
+		case TV_ANIMAL_BOOK:
+			if (terse)
+				return "& Bestiar|y|ies| #";
+			else
+				return "& Bestiar|y|ies| of Animals #";
+
+		case TV_EARTH_BOOK:
+			if (terse)
+				return "& Almanac~ #";
+			else
+				return "& Almanac~ of Rituals #";
+
+		case TV_WEATHER_BOOK:
+			if (terse)
+				return "& Swag Item~ #";
+			else
+				return "& Swag Item~ of Stunts #";
+
+		case TV_MUSIC_BOOK:
+			if (terse)
+				return "& Songbook~ #";
+			else
+				return "& Songbook~ of Music #";
+
+		case TV_HEALING_BOOK:
+			if (terse)
+				return "& Medkit~ #";
+			else
+				return "& Palliative Medkit~ #";
 
 		case TV_MUSHROOM:
 			return (show_flavor ? "& # Mushroom~" : "& Mushroom~");

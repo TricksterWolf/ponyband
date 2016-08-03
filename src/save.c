@@ -564,7 +564,7 @@ void wr_player_spells(void)
 		wr_byte(player->spell_flags[i]);
 
 	for (i = 0; i < player->class->magic.total_spells; i++)
-		wr_byte(player->spell_order[i]);
+		wr_u16b(player->spell_order[i]);
 }
 
 static void wr_gear_aux(struct object *gear)

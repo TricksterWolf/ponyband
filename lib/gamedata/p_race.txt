@@ -26,6 +26,7 @@
 # height:hgt:modhgt
 # weight:wgt:modwgt
 # flags:object flags
+# magic:see class file (for now)
 
 # 'name' indicates the beginning of an entry. The serial number must
 # increase for each new race.

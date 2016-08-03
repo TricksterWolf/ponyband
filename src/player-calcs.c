@@ -1371,7 +1371,7 @@ static void calc_spells(struct player *p)
 		j = p->spell_order[i];
 
 		/* Skip non-spells */
-		if (j >= 99) continue;
+		if (j == PY_SPELL_NEVER_LEARNED) continue;
 
 		/* Get the spell */
 		spell = spell_by_index(j);
@@ -1404,7 +1404,7 @@ static void calc_spells(struct player *p)
 		j = p->spell_order[i];
 
 		/* Skip unknown spells */
-		if (j >= 99) continue;
+		if (j == PY_SPELL_NEVER_LEARNED) continue;
 
 		/* Get the spell */
 		spell = spell_by_index(j);
@@ -1434,7 +1434,7 @@ static void calc_spells(struct player *p)
 		j = p->spell_order[i];
 
 		/* Skip unknown spells */
-		if (j >= 99) break;
+		if (j == PY_SPELL_NEVER_LEARNED) break;
 
 		/* Get the spell */
 		spell = spell_by_index(j);

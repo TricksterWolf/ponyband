@@ -423,12 +423,16 @@ static struct object_kind *choose_item(int a_idx)
 	 * the whole special/flavour issue was sorted out (see ticket #1014).
 	 */
 	while (tval == 0 ||	k_info[i].alloc_prob == 0 ||
-		   tval == TV_SHOT || tval == TV_ARROW || tval == TV_BOLT ||
-		   tval == TV_STAFF || tval == TV_WAND || tval == TV_ROD ||
-		   tval == TV_SCROLL || tval == TV_POTION || tval == TV_FLASK ||
-		   tval == TV_FOOD || tval == TV_MUSHROOM || tval == TV_MAGIC_BOOK ||
-		   tval == TV_TOTEM_BOOK || tval == TV_GOLD || tval == TV_LIGHT ||
-		   tval == TV_AMULET || tval == TV_RING || tval == TV_CHEST ||
+		    tval == TV_SHOT || tval == TV_ARROW || tval == TV_BOLT ||
+		    tval == TV_STAFF || tval == TV_WAND || tval == TV_ROD ||
+		    tval == TV_SCROLL || tval == TV_POTION || tval == TV_FLASK ||
+		    tval == TV_FOOD || tval == TV_MUSHROOM ||
+                    tval == TV_ARCANE_BOOK || tval == TV_DARK_BOOK ||
+                    tval == TV_ALCHEMY_BOOK || tval == TV_RANDOM_BOOK || 
+                    tval == TV_ANIMAL_BOOK || tval == TV_EARTH_BOOK ||
+                    tval == TV_WEATHER_BOOK || tval == TV_MUSIC_BOOK ||
+                    tval == TV_HEALING_BOOK || tval == TV_GOLD || tval == TV_LIGHT ||
+		    tval == TV_AMULET || tval == TV_RING || tval == TV_CHEST ||
 		   (tval == TV_HAFTED && sval == lookup_sval(tval, "Mighty Hammer")) ||
 		   (tval == TV_CROWN && sval == lookup_sval(tval, "Massive Iron Crown"))) {
 		r = randint1(base_freq[z_info->k_max - 1]);

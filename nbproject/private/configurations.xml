@@ -6,6 +6,18 @@
         <df name="hacking">
         </df>
       </df>
+      <df name="FezWords">
+        <df name="build">
+          <df name="classes">
+            <df name="fezwords">
+            </df>
+          </df>
+        </df>
+        <df name="src">
+          <df name="fezwords">
+          </df>
+        </df>
+      </df>
       <df name="lib">
         <df name="customize">
         </df>

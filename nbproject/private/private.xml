@@ -10,12 +10,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/lib/gamedata/p_race_bak.txt</file>
-            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/effects.c</file>
-            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/list-effects.h</file>
-            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/lib/gamedata/class.txt</file>
-            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/obj-desc.c</file>
-            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/lib/gamedata/p_race.txt</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/init.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/list-magic-realms.h</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/game-input.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/ui-spell.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/cmd-obj.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/obj-util.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/player-spell.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/init.h</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/src/cmd-core.c</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/lib/gamedata/class_bak.txt</file>
+            <file>file:/C:/Users/Trickster/Documents/NetBeansProjects/ponyband/lib/gamedata/spell.txt</file>
         </group>
     </open-files>
 </project-private>

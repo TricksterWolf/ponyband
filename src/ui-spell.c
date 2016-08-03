@@ -155,7 +155,7 @@ static const menu_iter spell_menu_iter = {
 };
 
 /**
- * Create and initialise a spell menu, given an object and a validity hook
+ * Create and initialize a spell menu, given an object and a validity hook
  */
 static struct menu *spell_menu_new(const struct object *obj,
 								   bool (*is_valid)(int spell_index))
@@ -216,7 +216,7 @@ static int spell_menu_select(struct menu *m, const char *noun, const char *verb)
 	screen_save();
 	region_erase_bordered(&m->active);
 
-	/* Format, capitalise and display */
+	/* Format, capitalize and display */
 	strnfmt(buf, sizeof buf, "%s which %s? ('?' to toggle description)",
 			verb, noun);
 	my_strcap(buf);
@@ -270,8 +270,8 @@ void textui_spell_browse(void)
 {
 	struct object *obj;
 
-	if (!get_item(&obj, "Browse which book? ",
-				  "You have no books that you can read.",
+	if (!get_item(&obj, "Browse which item? ",
+				  "You have no books or tools that you know how to use.",
 				  CMD_BROWSE_SPELL, obj_can_browse,
 				  (USE_INVEN | USE_FLOOR | IS_HARMLESS)))
 		return;
@@ -290,12 +290,15 @@ int textui_get_spell_from_book(const char *verb, struct object *book,
 							   const char *error,
 							   bool (*spell_filter)(int spell_index))
 {
-	const char *noun = player->class->magic.spell_realm->spell_noun;
+	const char *noun;
+        noun = realms[tval_idx_to_realm_idx(book->tval)].spell_noun;
 
 	struct menu *m;
 
 	track_object(player->upkeep, book);
 	handle_stuff(player);
+        
+        verb = realms[tval_idx_to_realm_idx(book->tval)].verb;
 
 	m = spell_menu_new(book, spell_filter);
 	if (m) {
@@ -317,13 +320,17 @@ int textui_get_spell(const char *verb, item_tester book_filter,
 	char prompt[1024];
 	struct object *book;
 
+        /* If verb is NULL, indicates 'default' case */
+        if (verb == NULL) verb = "use magic from";
+        
 	/* Create prompt */
-	strnfmt(prompt, sizeof prompt, "%s which book?", verb);
+	strnfmt(prompt, sizeof prompt, "%s which book or tool?", verb);
 	my_strcap(prompt);
 
 	if (!get_item(&book, prompt, error,
 				  cmd, book_filter, (USE_INVEN | USE_FLOOR)))
 		return -1;
-
+        
+        
 	return textui_get_spell_from_book(verb, book, error, spell_filter);
 }

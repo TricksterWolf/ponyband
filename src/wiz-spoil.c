@@ -120,8 +120,15 @@ static const grouper group_item[] =
 	{ TV_WAND,		"Wands" },
 	{ TV_STAFF,		"Staffs" },
 
-	{ TV_MAGIC_BOOK,	"Books (Mage)" },
-	{ TV_TOTEM_BOOK,	"Totems" },
+	{ TV_ARCANE_BOOK,	"Spellbooks" },
+	{ TV_DARK_BOOK,		"Dark Tomes" },
+	{ TV_ALCHEMY_BOOK,	"Formularies" },
+	{ TV_RANDOM_BOOK,	"Props" },
+	{ TV_ANIMAL_BOOK,	"Bestiaries" },
+	{ TV_EARTH_BOOK,	"Almanacs" },
+	{ TV_WEATHER_BOOK,	"Swag Items" },
+	{ TV_MUSIC_BOOK,	"Songbooks" },
+	{ TV_HEALING_BOOK,	"Medkits" },
 
 	{ TV_CHEST,		"Chests" },
 

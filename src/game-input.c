@@ -143,7 +143,7 @@ int get_spell_from_book(const char *verb, struct object *book,
 {
 	/* Ask the UI for it */
 	if (get_spell_from_book_hook)
-		return get_spell_from_book_hook(verb, book, error, spell_filter);
+		return get_spell_from_book_hook(realms[tval_idx_to_realm_idx(book->tval)].verb, book, error, spell_filter);
 	else
 		return -1;
 }

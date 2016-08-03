@@ -38,28 +38,28 @@
 
 
 chart:1:2:10
-phrase:You are the only foal 
+phrase:You are the illegitimate and unacknowledged child 
 chart:1:2:20
-phrase:You are an adopted foal 
+phrase:You are the illegitimate but acknowledged child 
 chart:1:2:95
-phrase:You are one of several foals 
+phrase:You are one of several children 
 chart:1:2:100
-phrase:You are the eldest foal 
+phrase:You are the first child 
 
-chart:2:3:5
-phrase:of Earth pony rock farmers.  
-chart:2:3:45
-phrase:of Earth pony farmers.  
+chart:2:3:40
+phrase:of a Serf.  
+chart:2:3:65
+phrase:of a Yeoman.  
 chart:2:3:80
-phrase:of Earth pony business-owners.  
+phrase:of a Townsman.  
 chart:2:3:90
-phrase:of Earth pony professionals.  
+phrase:of a Guildsman.  
 chart:2:3:96
-phrase:of a migrant Earth pony family.  
+phrase:of a Landed Knight.  
 chart:2:3:99
-phrase:of a wealthy Earth pony family.  
+phrase:of a Titled Noble.  
 chart:2:3:100
-phrase:of a Unicorn family.  
+phrase:of a Royal Blood Line.  
 
 chart:3:50:20
 phrase:You are the black sheep of the family.  

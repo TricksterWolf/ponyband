@@ -133,11 +133,11 @@ void player_spells_init(struct player *p)
 
 	/* Allocate */
 	p->spell_flags = mem_zalloc(num_spells * sizeof(byte));
-	p->spell_order = mem_zalloc(num_spells * sizeof(byte));
+	p->spell_order = mem_zalloc(num_spells * sizeof(u16b));
 
 	/* None of the spells have been learned yet */
 	for (i = 0; i < num_spells; i++)
-		p->spell_order[i] = 99;
+		p->spell_order[i] = PY_SPELL_NEVER_LEARNED;
 }
 
 /**
@@ -355,20 +355,19 @@ s16b spell_chance(int spell_index)
 void spell_learn(int spell_index)
 {
 	int i;
-	const char *noun = player->class->magic.spell_realm->spell_noun;
 
 	/* Learn the spell */
 	player->spell_flags[spell_index] |= PY_SPELL_LEARNED;
 
 	/* Find the next open entry in "spell_order[]" */
 	for (i = 0; i < player->class->magic.total_spells; i++)
-		if (player->spell_order[i] == 99) break;
+		if (player->spell_order[i] == PY_SPELL_NEVER_LEARNED) break;
 
 	/* Add the spell to the known list */
 	player->spell_order[i] = spell_index;
 
 	/* Mention the result */
-	msgt(MSG_STUDY, "You have learned the %s of %s.", noun,
+	msgt(MSG_STUDY, "You have learned %s.", 
 		 spell_by_index(spell_index)->name);
 
 	/* One less spell available */
@@ -376,7 +375,7 @@ void spell_learn(int spell_index)
 
 	/* Message if needed */
 	if (player->upkeep->new_spells)
-		msg("You can learn %d more %s%s.", player->upkeep->new_spells, noun, 
+		msg("You can learn %d more magical actions.", player->upkeep->new_spells, "magical action", 
 			PLURAL(player->upkeep->new_spells));
 
 	/* Redraw Study Status */
@@ -417,15 +416,16 @@ bool spell_cast(int spell_index, int dir)
 
 		/* A spell was cast */
 		sound(MSG_SPELL);
+                
+                int e = (spell->slevel + 1) * (spell->smana + 1);
 
 		if (!(player->spell_flags[spell_index] & PY_SPELL_WORKED)) {
-			int e = spell->sexp;
-
+                    
 			/* The spell worked */
 			player->spell_flags[spell_index] |= PY_SPELL_WORKED;
 
 			/* Gain experience */
-			player_exp_gain(player, e * spell->slevel);
+			player_exp_gain(player, e);
 
 			/* Redraw object recall */
 			player->upkeep->redraw |= (PR_OBJECT);

@@ -144,12 +144,40 @@ graphics:light umber
 break:100
 flags:EASY_KNOW
 
-name:magic book:Magic Book~
-graphics:light red
+name:spellbook:Spellbook~
+graphics:light violet
 flags:HATES_FIRE | EASY_KNOW
 
-name:totem:Totem~
+name:dark tome:Dark Tome~
+graphics:violet
+flags:HATES_FIRE | EASY_KNOW
+
+name:formulary:Formular|y|ies|
 graphics:light green
 flags:HATES_FIRE | EASY_KNOW
+
+name:prop:Prop~
+graphics:mustard
+flags:HATES_ACID | EASY_KNOW
+
+name:bestiary:Bestiar|y|ies|
+graphics:light yellow
+flags:HATES_FIRE | EASY_KNOW
+
+name:almanac:Almanac~
+graphics:mud
+flags:HATES_FIRE | EASY_KNOW
+
+name:swag item:Swag Item~
+graphics:light red
+flags:HATES_ACID | EASY_KNOW
+
+name:songbook:Songbook~
+graphics:deep light blue
+flags:HATES_FIRE | EASY_KNOW
+
+name:medkit:Medkit~
+graphics:light pink
+flags:HATES_ACID | EASY_KNOW
 
 name:gold
