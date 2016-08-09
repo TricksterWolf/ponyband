@@ -23,5 +23,4 @@ doc/manual/*.aux
 mk/buildsys.mk
 *~
 .DS_Store
-/FezWords/nbproject/private/
-/FezWords/build/
+nbproject
